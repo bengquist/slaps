@@ -25,10 +25,24 @@ export const GlobalStyle = createGlobalStyle`
   }
   @font-face {
     font-family: 'pt-sans';
-    src: url('/static/PT_Sans-Web-Regular.woff')
+    src: url('/static/Poppins-Medium.woff')
     format('woff2');
     font-weight: normal; 
     font-style: normal;
+  }
+  @font-face {
+    font-family: 'pt-sans';
+    src: url('/static/Poppins-SemiBold.woff')
+    format('woff2');
+    font-weight: bold; 
+    font-style: bold;
+  }
+  @font-face {
+    font-family: 'pt-sans';
+    src: url('/static/Poppins-Bold.woff')
+    format('woff2');
+    font-weight: bolder; 
+    font-style: bolder;
   }
   body, h1, h2, h3, h4, h5, h6, p, ol, ul, input[type=text], input[type=email], button {
     margin: 0;
