@@ -9,7 +9,7 @@ class Page extends Component {
       <Container>
         <Meta />
         <Header />
-        {this.props.children}
+        <Body>{this.props.children}</Body>
       </Container>
     );
   }
@@ -17,4 +17,9 @@ class Page extends Component {
 
 export default Page;
 
-const Container = styled.div``;
+const Container = styled.body``;
+
+const Body = styled.div`
+  margin: auto;
+  max-width: ${props => props.theme.layout.maxWidth}px;
+`;

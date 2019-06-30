@@ -2,15 +2,11 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   html {
-    font-size: 10px;
+    font-size: 15px;
     background: rgba(247, 247, 247, 1);
-    height: 100vh;
   }
   body {
-    font-size: 1.5rem;
-    height: 100vh;
-    position: relative;
-    overflow: auto;
+    font-size: 1rem;
   }
   :root {
     --step-up-5: 2em;
@@ -34,13 +30,6 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: normal; 
     font-style: normal;
   }
-  @font-face {
-    font-family: 'pt-sans';
-    src: url('/static/PT_Sans-Web-Bold.woff')
-    format('woff2');
-    font-weight: bold; 
-    font-style: normal;
-  }
   body, h1, h2, h3, h4, h5, h6, p, ol, ul, input[type=text], input[type=email], button {
     margin: 0;
     padding: 0;
@@ -61,6 +50,7 @@ export const GlobalStyle = createGlobalStyle`
     background: none;
     border: none;
     box-shadow: 0 0 0 1pt rgb(0, 0, 0, 0.3);
+    color: inherit;
     :hover {
       cursor: pointer;
     }
