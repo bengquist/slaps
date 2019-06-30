@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import styled, { ThemeProvider } from "styled-components";
+import React from "react";
+import styled from "styled-components";
 import Header from "./Header";
 import Meta from "./Meta";
 
-class Page extends Component {
-  render() {
-    return (
-      <Container>
-        <Meta />
-        <Header />
-        <Body>{this.props.children}</Body>
-      </Container>
-    );
-  }
-}
+const Page = props => {
+  console.log(props);
+
+  return (
+    <Container>
+      <Meta />
+      <Header />
+      <Body>{props.children}</Body>
+    </Container>
+  );
+};
 
 export default Page;
 
