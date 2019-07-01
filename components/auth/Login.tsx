@@ -1,24 +1,17 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { preventDefault } from "../../lib/eventHelpers";
-import { gql } from "apollo-boost";
 import { useMutation } from "react-apollo-hooks";
 import Cookie from "js-cookie";
-
-const SIGN_IN = gql`
-  mutation SIGN_IN($login: String!, $password: String!) {
-    signIn(login: $login, password: $password) {
-      token
-    }
-  }
-`;
+import { SIGN_IN } from "./query";
 
 function Login() {
   const [login, setLogin] = useState();
   const [password, setPassword] = useState();
 
   const toggleSignIn = useMutation(SIGN_IN, {
-    update: (_, { data }) => {
+    update: (cache, { data }) => {
+      console.log(cache);
       Cookie.set("token", data.signIn.token);
     },
     variables: { login, password }
