@@ -1,32 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { preventDefault } from "../../lib/eventHelpers";
 import { gql } from "apollo-boost";
-import { useQuery } from "react-apollo-hooks";
+import { useMutation } from "react-apollo-hooks";
+import Cookie from "js-cookie";
 
-const GET_USERS = gql`
-  {
-    users {
-      username
+const SIGN_IN = gql`
+  mutation SIGN_IN($login: String!, $password: String!) {
+    signIn(login: $login, password: $password) {
+      token
     }
   }
 `;
 
 function Login() {
-  const { loading, data } = useQuery(GET_USERS);
+  const [login, setLogin] = useState();
+  const [password, setPassword] = useState();
 
-  console.log(loading, data);
+  const toggleSignIn = useMutation(SIGN_IN, {
+    update: (_, { data }) => {
+      Cookie.set("token", data.signIn.token);
+    },
+    variables: { login, password }
+  });
 
   return (
     <Container>
-      <Form onSubmit={preventDefault(() => console.log("yo"))}>
+      <Form onSubmit={preventDefault(() => toggleSignIn())}>
         <Field>
           <label htmlFor="username">Username</label>
-          <input id="username" type="text" />
+          <input
+            onChange={e => setLogin(e.target.value)}
+            id="username"
+            type="text"
+          />
         </Field>
         <Field>
           <label htmlFor="password">Password</label>
-          <input id="username" type="text" />
+          <input
+            onChange={e => setPassword(e.target.value)}
+            id="username"
+            type="password"
+          />
         </Field>
         <Actions>
           <button>Log In</button>
