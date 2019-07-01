@@ -1,13 +1,28 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
+import Router from "next/router";
+import NProgress from "nprogress";
+
+Router.onRouteChangeStart = () => {
+  NProgress.start();
+};
+Router.onRouteChangeComplete = () => {
+  NProgress.done();
+};
+
+Router.onRouteChangeError = () => {
+  NProgress.done();
+};
 
 function Header() {
   return (
     <Container>
       <Inner>
         <Section>
-          <Logo>Slaps</Logo>
+          <Link href="/">
+            <Logo>Slaps</Logo>
+          </Link>
         </Section>
 
         <Section>

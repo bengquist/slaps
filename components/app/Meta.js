@@ -15,6 +15,7 @@ const Meta = ({ title, description, ogImage, url }) => (
     <link rel="apple-touch-icon" href="/static/touch-icon.png" />
     <link rel="mask-icon" href="/static/favicon-mask.svg" color="#49B882" />
     <link rel="icon" href="/static/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
     <meta property="og:url" content={url || defaultOgUrl} />
     <meta property="og:title" content={title || ""} />
     <meta
