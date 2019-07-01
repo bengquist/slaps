@@ -4,8 +4,6 @@ import Header from "./Header";
 import Meta from "./Meta";
 
 const Page = props => {
-  console.log(props);
-
   return (
     <Container>
       <Meta />
@@ -17,9 +15,14 @@ const Page = props => {
 
 export default Page;
 
-const Container = styled.body``;
+const Container = styled.div``;
 
 const Body = styled.div`
+  height: 100vh;
   margin: auto;
   max-width: ${props => props.theme.layout.maxWidth}px;
+
+  > * {
+    height: 100%;
+  }
 `;

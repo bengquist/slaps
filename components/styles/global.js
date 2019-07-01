@@ -4,6 +4,7 @@ export const GlobalStyle = createGlobalStyle`
   html {
     font-size: 15px;
     background: rgba(247, 247, 247, 1);
+    height: 100vh;
   }
   body {
     font-size: 1rem;

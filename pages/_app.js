@@ -3,6 +3,7 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "../components/styles/theme";
 import { GlobalStyle } from "../components/styles/global";
 import { ApolloProvider } from "react-apollo";
+import { ApolloProvider as ApolloHooksProvider } from "react-apollo-hooks";
 import withApollo from "../lib/withApollo";
 import Page from "../components/app/Page";
 
@@ -18,16 +19,18 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps, apolloClient } = this.props;
+    const { Component, pageProps, client } = this.props;
 
     return (
       <Container>
         <GlobalStyle />
         <ThemeProvider theme={theme}>
-          <ApolloProvider client={apolloClient}>
-            <Page>
-              <Component {...pageProps} />
-            </Page>
+          <ApolloProvider client={client}>
+            <ApolloHooksProvider client={client}>
+              <Page>
+                <Component {...pageProps} />
+              </Page>
+            </ApolloHooksProvider>
           </ApolloProvider>
         </ThemeProvider>
       </Container>
