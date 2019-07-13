@@ -1,45 +1,76 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { preventDefault } from "../../lib/eventHelpers";
 import { useMutation } from "react-apollo-hooks";
 import Cookie from "js-cookie";
 import { SIGN_IN } from "./query";
+import { Formik, FormikErrors } from "formik";
+import FormInput from "../ui/FormInput";
+
+type FormValues = {
+  user: string;
+  password: string;
+};
 
 function Login() {
-  const [login, setLogin] = useState();
-  const [password, setPassword] = useState();
-
   const toggleSignIn = useMutation(SIGN_IN, {
-    update: (cache, { data }) => {
-      console.log(cache);
+    update: (_, { data }) => {
       Cookie.set("token", data.signIn.token);
-    },
-    variables: { login, password }
+    }
   });
+
+  const submitHandler = ({ user, password }: FormValues) => {
+    toggleSignIn({ variables: { login: user, password } });
+  };
+
+  const validateHandler = (values: FormValues) => {
+    const errors: FormikErrors<FormValues> = {};
+
+    if (!values.user) {
+      errors.user = "Required";
+    }
+
+    if (!values.password) {
+      errors.password = "Required";
+    }
+
+    return errors;
+  };
 
   return (
     <Container>
-      <Form onSubmit={preventDefault(() => toggleSignIn())}>
-        <Field>
-          <label htmlFor="username">Username</label>
-          <input
-            onChange={e => setLogin(e.target.value)}
-            id="username"
-            type="text"
-          />
-        </Field>
-        <Field>
-          <label htmlFor="password">Password</label>
-          <input
-            onChange={e => setPassword(e.target.value)}
-            id="username"
-            type="password"
-          />
-        </Field>
-        <Actions>
-          <button>Log In</button>
-        </Actions>
-      </Form>
+      <Formik
+        initialValues={{ user: "", password: "" }}
+        onSubmit={submitHandler}
+        validate={validateHandler}
+      >
+        {props => {
+          return (
+            <Form onSubmit={props.handleSubmit}>
+              <Field>
+                Email or Username
+                <FormInput
+                  onChange={props.handleChange}
+                  error={props.errors.user}
+                  name="user"
+                  type="text"
+                />
+              </Field>
+              <Field>
+                Password
+                <FormInput
+                  onChange={props.handleChange}
+                  error={props.errors.password}
+                  name="password"
+                  type="password"
+                />
+              </Field>
+              <Actions>
+                <button type="submit">Log In</button>
+              </Actions>
+            </Form>
+          );
+        }}
+      </Formik>
     </Container>
   );
 }
@@ -47,10 +78,11 @@ function Login() {
 export default Login;
 
 const Container = styled.div`
-  height: 100%;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: ${props => props.theme.colors.darkGray};
 `;
 
 const Form = styled.form`
@@ -62,9 +94,6 @@ const Form = styled.form`
   padding: 1.5rem;
 `;
 
-const Field = styled.div`
-  display: grid;
-  grid-gap: 0.51rem;
-`;
+const Field = styled.label``;
 
 const Actions = styled.div``;

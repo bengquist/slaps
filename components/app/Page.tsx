@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Header from "./Header";
 import Meta from "./Meta";
 
-const Page = props => {
+const Page: React.FC = props => {
   return (
     <Container>
       <Meta />

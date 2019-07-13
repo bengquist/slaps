@@ -1,11 +1,10 @@
 import App, { Container } from "next/app";
 import { ThemeProvider } from "styled-components";
-import { theme } from "../components/styles/theme";
-import { GlobalStyle } from "../components/styles/global";
+import { theme } from "../components/style/theme";
+import { GlobalStyle } from "../components/style/global";
 import { ApolloProvider } from "react-apollo";
 import { ApolloProvider as ApolloHooksProvider } from "react-apollo-hooks";
 import withApollo from "../lib/withApollo";
-import Page from "../components/app/Page";
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -27,9 +26,7 @@ class MyApp extends App {
         <ThemeProvider theme={theme}>
           <ApolloProvider client={client}>
             <ApolloHooksProvider client={client}>
-              <Page>
-                <Component {...pageProps} />
-              </Page>
+              <Component {...pageProps} />
             </ApolloHooksProvider>
           </ApolloProvider>
         </ThemeProvider>
