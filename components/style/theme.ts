@@ -10,10 +10,11 @@ export const theme = {
     twitter: "#1DA1F2",
     google: "#4885ED",
     paypal: "#2699FB",
-    white: "#ffffff"
+    white: "#ffffff",
+    black: "#101010"
   },
   gradient: {
-    dark: ""
+    dark: "linear-gradient(#7E7E7E, #101010);"
   },
   shadows: {
     soft: "0px 3px 6px rgba(0, 0, 0, 0.15)",

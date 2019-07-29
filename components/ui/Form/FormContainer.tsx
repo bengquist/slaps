@@ -5,5 +5,5 @@ export default styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: ${props => props.theme.colors.darkGray};
+  background: ${props => props.theme.gradient.dark};
 `;
