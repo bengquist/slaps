@@ -27,7 +27,10 @@ function Header() {
 
         <Section>
           <Link href="/login">
-            <Option>Log In/Sign Up</Option>
+            <Option>Log In</Option>
+          </Link>
+          <Link href="/signup">
+            <Option>Sign Up</Option>
           </Link>
         </Section>
       </Inner>
@@ -51,7 +54,9 @@ const Inner = styled.div`
 `;
 
 const Section = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
 `;
 
 const Option = styled.button`

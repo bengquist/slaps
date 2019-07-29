@@ -1,10 +1,13 @@
 import React from "react";
-import styled from "styled-components";
 import { useMutation } from "react-apollo-hooks";
 import Cookie from "js-cookie";
 import { SIGN_IN } from "./query";
 import { Formik, FormikErrors } from "formik";
-import FormInput from "../ui/FormInput";
+import FormInput from "../ui/Form/FormInput";
+import FormPanel from "../ui/Form/FormPanel";
+import FormLabel from "../ui/Form/FormLabel";
+import FormContainer from "../ui/Form/FormContainer";
+import FormActions from "../ui/Form/FormActions";
 
 type FormValues = {
   user: string;
@@ -37,7 +40,7 @@ function Login() {
   };
 
   return (
-    <Container>
+    <FormContainer>
       <Formik
         initialValues={{ user: "", password: "" }}
         onSubmit={submitHandler}
@@ -45,8 +48,8 @@ function Login() {
       >
         {props => {
           return (
-            <Form onSubmit={props.handleSubmit}>
-              <Field>
+            <FormPanel onSubmit={props.handleSubmit}>
+              <FormLabel>
                 Email or Username
                 <FormInput
                   onChange={props.handleChange}
@@ -54,8 +57,8 @@ function Login() {
                   name="user"
                   type="text"
                 />
-              </Field>
-              <Field>
+              </FormLabel>
+              <FormLabel>
                 Password
                 <FormInput
                   onChange={props.handleChange}
@@ -63,37 +66,16 @@ function Login() {
                   name="password"
                   type="password"
                 />
-              </Field>
-              <Actions>
+              </FormLabel>
+              <FormActions>
                 <button type="submit">Log In</button>
-              </Actions>
-            </Form>
+              </FormActions>
+            </FormPanel>
           );
         }}
       </Formik>
-    </Container>
+    </FormContainer>
   );
 }
 
 export default Login;
-
-const Container = styled.div`
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: ${props => props.theme.colors.darkGray};
-`;
-
-const Form = styled.form`
-  display: grid;
-  grid-gap: 1.5rem;
-  background: ${props => props.theme.colors.gray};
-  width: 100%;
-  max-width: 500px;
-  padding: 1.5rem;
-`;
-
-const Field = styled.label``;
-
-const Actions = styled.div``;

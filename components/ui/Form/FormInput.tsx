@@ -1,14 +1,12 @@
 import React, { ComponentPropsWithoutRef } from "react";
 import styled from "styled-components";
-import { flexCenter } from "../style/helpers";
+import { flexCenter } from "../../style/helpers";
 
 type Props = ComponentPropsWithoutRef<"input"> & {
   error?: string;
 };
 
 function FormInput({ error, ...props }: Props) {
-  console.log(error);
-
   return (
     <Container>
       <Input {...props} />

@@ -1,14 +1,19 @@
 export const theme = {
   colors: {
-    primary: "rgb(6,47,79)",
-    secondary: "rgb(131,23,114)",
-    accent: "rgb(184,38,1)",
-    black: "rgb(0,0,0)",
-    gray: "rgb(232,232,232)",
-    darkGray: "rgb(50,50,50)",
-    white: "rgb(255,255,255)",
-    primaryText: "rgb(50,50,50)",
-    secondaryText: "rgb(255,255,255)"
+    lightGray: "#7E7E7E",
+    mediumGray: "#5B5B5B",
+    darkGray: "#363636",
+    red: "#D51717",
+    pink: "#FF4A4A",
+    facebook: "#3B5998",
+    soundcloud: "#FF7700",
+    twitter: "#1DA1F2",
+    google: "#4885ED",
+    paypal: "#2699FB",
+    white: "#ffffff"
+  },
+  gradient: {
+    dark: ""
   },
   shadows: {
     soft: "0px 3px 6px rgba(0, 0, 0, 0.15)",
