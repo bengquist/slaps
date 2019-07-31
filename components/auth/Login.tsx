@@ -1,81 +1,91 @@
 import React from "react";
-import { useMutation } from "react-apollo-hooks";
-import Cookie from "js-cookie";
-import { SIGN_IN } from "./query";
-import { Formik, FormikErrors } from "formik";
-import FormInput from "../ui/Form/FormInput";
-import FormPanel from "../ui/Form/FormPanel";
-import FormLabel from "../ui/Form/FormLabel";
-import FormContainer from "../ui/Form/FormContainer";
-import FormActions from "../ui/Form/FormActions";
-
-type FormValues = {
-  user: string;
-  password: string;
-};
+import styled from "styled-components";
+import { flexColumnCenter } from "../style/helpers";
+import colors from "../style/colors";
+import AuthBox from "./AuthBox";
 
 function Login() {
-  const toggleSignIn = useMutation(SIGN_IN, {
-    update: (_, { data }) => {
-      Cookie.set("token", data.signIn.token);
-    }
-  });
-
-  const submitHandler = ({ user, password }: FormValues) => {
-    toggleSignIn({ variables: { login: user, password } });
-  };
-
-  const validateHandler = (values: FormValues) => {
-    const errors: FormikErrors<FormValues> = {};
-
-    if (!values.user) {
-      errors.user = "Required";
-    }
-
-    if (!values.password) {
-      errors.password = "Required";
-    }
-
-    return errors;
-  };
-
   return (
-    <FormContainer>
-      <Formik
-        initialValues={{ user: "", password: "" }}
-        onSubmit={submitHandler}
-        validate={validateHandler}
-      >
-        {props => {
-          return (
-            <FormPanel onSubmit={props.handleSubmit}>
-              <FormLabel>
-                Email or Username
-                <FormInput
-                  onChange={props.handleChange}
-                  error={props.errors.user}
-                  name="user"
-                  type="text"
-                />
-              </FormLabel>
-              <FormLabel>
-                Password
-                <FormInput
-                  onChange={props.handleChange}
-                  error={props.errors.password}
-                  name="password"
-                  type="password"
-                />
-              </FormLabel>
-              <FormActions>
-                <button type="submit">Log In</button>
-              </FormActions>
-            </FormPanel>
-          );
-        }}
-      </Formik>
-    </FormContainer>
+    <Container>
+      <Panel>
+        <Title>LOG IN</Title>
+        <Form>
+          <FormBody>
+            <Label>
+              <p>Email or Username</p>
+              <Input type="text" />
+            </Label>
+            <Label>
+              <p>Password</p>
+              <Input style={{ fontSize: "1.125rem" }} type="password" />
+            </Label>
+          </FormBody>
+
+          <Button type="submit">LOG IN</Button>
+        </Form>
+        <p>OR</p>
+        <AuthBox />
+      </Panel>
+    </Container>
   );
 }
 
 export default Login;
+
+const Container = styled.div`
+  background: ${props => props.theme.gradient.dark};
+  height: 100vh;
+  ${flexColumnCenter};
+  padding: 1rem;
+`;
+
+const Panel = styled.div`
+  width: 100%;
+  color: ${colors.white};
+
+  display: grid;
+  grid-gap: 1rem;
+  justify-items: center;
+`;
+
+const Title = styled.h1`
+  color: ${colors.white};
+  font-size: 2rem;
+`;
+
+const Form = styled.form`
+  background: ${colors.white};
+  width: 100%;
+  max-width: 450px;
+  padding: 2rem;
+  border-radius: 0.25rem;
+
+  display: grid;
+  grid-gap: 2rem;
+`;
+
+const FormBody = styled.div`
+  display: grid;
+  grid-gap: 1.25rem;
+`;
+
+const Label = styled.label`
+  display: grid;
+  grid-gap: 0.25rem;
+  color: ${colors.darkGray};
+  font-size: 0.75rem;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid ${colors.darkGray};
+  border-radius: 0.25rem;
+`;
+
+const Button = styled.button`
+  background: ${colors.red};
+  color: ${colors.white};
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+`;

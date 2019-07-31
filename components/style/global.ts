@@ -9,6 +9,8 @@ export const GlobalStyle = createGlobalStyle`
   }
   body {
     font-size: 1rem;
+    margin: 0;
+    padding: 0;
   }
   :root {
     --step-up-5: 2em;
@@ -47,13 +49,13 @@ export const GlobalStyle = createGlobalStyle`
     font-style: bolder;
   }
   body, h1, h2, h3, h4, h5, h6, p, ol, ul, input[type=text], input[type=email], button {
-    margin: 0;
-    padding: 0;
-    font-weight: 500;
     font-family: "pt-sans"
   }
   *, *:before, *:after {
     box-sizing: inherit;
+  }
+  p, h1 {
+    margin: 0;
   }
   ol, ul {
     list-style: none;
