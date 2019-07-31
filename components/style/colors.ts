@@ -1,3 +1,17 @@
+export type Colors =
+  | "lightGray"
+  | "mediumGray"
+  | "darkGray"
+  | "red"
+  | "pink"
+  | "facebook"
+  | "soundcloud"
+  | "twitter"
+  | "google"
+  | "paypal"
+  | "white"
+  | "black";
+
 export default {
   lightGray: "#7E7E7E",
   mediumGray: "#5B5B5B",

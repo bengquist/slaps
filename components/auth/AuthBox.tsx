@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import colors from "../style/colors";
+import colors, { Colors } from "../style/colors";
 
 function AuthBox() {
   return (
     <Container>
-      <Button type="submit">LOG IN</Button>
-      <Button type="submit">LOG IN</Button>
-      <Button type="submit">LOG IN</Button>
-      <Button type="submit">LOG IN</Button>
+      <Button background="facebook">FACEBOOK</Button>
+      <Button background="soundcloud">SOUNDCLOUD</Button>
+      <Button background="twitter">TWITTER</Button>
+      <Button background="google">GOOGLE</Button>
     </Container>
   );
 }
@@ -26,8 +26,8 @@ const Container = styled.div`
   grid-gap: 0.5rem;
 `;
 
-const Button = styled.button`
-  background: ${colors.red};
+const Button = styled.button<{ background: Colors }>`
+  background: ${props => colors[props.background || "red"]};
   color: ${colors.white};
   padding: 0.75rem;
   border-radius: 0.25rem;
