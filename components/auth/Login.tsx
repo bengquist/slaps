@@ -6,6 +6,7 @@ import validateLogin from "./helpers";
 import { SIGN_IN } from "./mutation";
 import { useMutation } from "react-apollo-hooks";
 import Cookie from "js-cookie";
+import redirect from "../../lib/redirect";
 
 const INITIAL_STATE = {
   user: "",
@@ -32,6 +33,8 @@ function Login() {
     await toggleSignIn({
       variables: { login: values.user, password: values.password }
     });
+
+    redirect({}, "/login");
   }
 
   return (

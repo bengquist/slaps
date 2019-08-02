@@ -4,6 +4,9 @@ import Link from "next/link";
 import Router from "next/router";
 import NProgress from "nprogress";
 import colors from "../style/colors";
+import redirect from "../../lib/redirect";
+import Cookie from "cookie";
+import { useApolloClient } from "react-apollo-hooks";
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -17,6 +20,21 @@ Router.onRouteChangeError = () => {
 };
 
 function Header() {
+  const client = useApolloClient();
+
+  const signout = () => {
+    document.cookie = Cookie.serialize("token", "", {
+      maxAge: -1 // Expire the cookie immediately
+    });
+
+    // Force a reload of all the current queries now that the user is
+    // logged in, so we don't accidentally leave any state around.
+    client.cache.reset().then(() => {
+      // Redirect to a more useful page when signed out
+      redirect({}, "/login");
+    });
+  };
+
   return (
     <Container>
       <Inner>
@@ -27,12 +45,16 @@ function Header() {
         </Section>
 
         <Section>
-          <Link href="/login">
-            <Option>Log In</Option>
-          </Link>
-          <Link href="/signup">
-            <Option>Sign Up</Option>
-          </Link>
+          <>
+            <Link href="/login">
+              <Option>Log In</Option>
+            </Link>
+            <Link href="/signup">
+              <Option>Sign Up</Option>
+            </Link>{" "}
+          </>
+
+          <button onClick={signout}>Sign Out</button>
         </Section>
       </Inner>
     </Container>
