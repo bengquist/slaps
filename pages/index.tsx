@@ -9,7 +9,6 @@ Home.getInitialProps = async function(context) {
   const { me } = await checkLoggedIn(context.apolloClient);
 
   if (!me) {
-    // If not signed in, send them somewhere more useful
     redirect(context, "/login");
   }
 

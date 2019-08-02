@@ -28,8 +28,8 @@ function Login() {
     }
   });
 
-  function submitHandler() {
-    toggleSignIn({
+  async function submitHandler() {
+    await toggleSignIn({
       variables: { login: values.user, password: values.password }
     });
   }
