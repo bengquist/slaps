@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import Router from "next/router";
 import NProgress from "nprogress";
+import colors from "../style/colors";
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -41,14 +42,15 @@ function Header() {
 export default Header;
 
 const Container = styled.header`
-  background: ${props => props.theme.colors.secondary};
-  color: ${props => props.theme.colors.secondaryText};
+  background: ${colors.darkGray};
+  color: ${colors.white};
 `;
 
 const Inner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 1rem;
   margin: auto;
   max-width: ${props => props.theme.layout.maxWidth}px;
 `;
@@ -66,4 +68,5 @@ const Option = styled.button`
 
 const Logo = styled.button`
   font-size: 2rem;
+  padding: 0;
 `;

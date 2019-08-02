@@ -21,6 +21,7 @@ export const Panel = styled.div`
 export const Title = styled.h1`
   color: ${colors.white};
   font-size: 2rem;
+  font-weight: normal;
 `;
 
 export const Form = styled.form`

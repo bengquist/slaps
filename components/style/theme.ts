@@ -1,7 +1,7 @@
 export const theme = {
   colors: {
     lightGray: "#7E7E7E",
-    mediumGray: "#5B5B5B",
+    mediumGray: "#505050",
     darkGray: "#363636",
     red: "#D51717",
     pink: "#FF4A4A",
@@ -14,7 +14,7 @@ export const theme = {
     black: "#101010"
   },
   gradient: {
-    dark: "linear-gradient(#7E7E7E, #101010);"
+    dark: "linear-gradient(#505050, #101010);"
   },
   shadows: {
     soft: "0px 3px 6px rgba(0, 0, 0, 0.15)",

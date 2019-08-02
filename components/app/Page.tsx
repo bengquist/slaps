@@ -19,6 +19,7 @@ const Container = styled.div``;
 
 const Body = styled.div`
   height: 100vh;
+  padding: 0 1rem;
   margin: auto;
   max-width: ${props => props.theme.layout.maxWidth}px;
 
