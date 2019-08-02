@@ -1,19 +1,17 @@
 import React from "react";
 import Login from "../components/auth/Login";
-import { parseCookies } from "../lib/parseCookies";
-import Router from "next/router";
+import checkLoggedIn from "../lib/checkLoggedIn";
+import redirect from "../lib/redirect";
 
-const LoginPage = ({ token }) => {
-  if (token) Router.push("/");
-
+const LoginPage = () => {
   return <Login />;
 };
 
-LoginPage.getInitialProps = ({ req }: any) => {
-  const { token } = parseCookies(req);
+LoginPage.getInitialProps = async context => {
+  const { me } = await checkLoggedIn(context.apolloClient);
 
-  if (token) {
-    return { token };
+  if (me) {
+    redirect(context, "/");
   }
 
   return {};
