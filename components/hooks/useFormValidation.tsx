@@ -40,9 +40,7 @@ function useFormValidation(
     setErrors(validationErrors);
     setSubmitting(true);
 
-    const user = await onSubmit();
-
-    console.log(user);
+    await onSubmit();
 
     setSubmitting(false);
   }
