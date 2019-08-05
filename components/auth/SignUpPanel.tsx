@@ -46,7 +46,7 @@ function SignUpPanel() {
           <Auth.Label>
             <p>Username</p>
             <Auth.Input
-              name="user"
+              name="username"
               type="text"
               onBlur={handleBlur}
               onChange={handleChange}
@@ -56,7 +56,7 @@ function SignUpPanel() {
           <Auth.Label>
             <p>Email</p>
             <Auth.Input
-              name="user"
+              name="email"
               type="text"
               onBlur={handleBlur}
               onChange={handleChange}
@@ -77,7 +77,7 @@ function SignUpPanel() {
           <Auth.Label>
             <p>Confirm Password</p>
             <Auth.Input
-              name="password"
+              name="passwordConfirm"
               style={{ fontSize: "1.125rem" }}
               type="password"
               onBlur={handleBlur}

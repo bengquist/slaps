@@ -15,16 +15,26 @@ export function validateLogin(values: any) {
 }
 
 export function validateSignUp(values: any) {
-  let errors = { user: "", password: "" };
+  let errors = { username: "", email: "", password: "", passwordConfirm: "" };
 
-  // Login Errors
-  if (!values.user) {
-    errors.user = "Required";
+  // Username Errors
+  if (!values.username) {
+    errors.username = "Required";
+  }
+
+  // Email Errors
+  if (!values.email) {
+    errors.email = "Required";
   }
 
   // Password Errors
   if (!values.password) {
     errors.password = "Required";
+  }
+
+  // Password Confirm Errors
+  if (!values.passwordConfirm) {
+    errors.passwordConfirm = "Required";
   }
 
   return errors;
