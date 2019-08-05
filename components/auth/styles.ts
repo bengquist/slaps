@@ -15,7 +15,7 @@ export const Panel = styled.div`
   max-width: 450px;
 
   display: grid;
-  grid-gap: 1rem;
+  grid-gap: 1.5rem;
   justify-items: center;
 `;
 
