@@ -2,11 +2,12 @@ import React from "react";
 import AuthBox from "./AuthBox";
 import * as Auth from "./styles";
 import useFormValidation from "../hooks/useFormValidation";
-import validateLogin from "./helpers";
+import { validateLogin } from "./helpers";
 import { SIGN_IN } from "./mutation";
 import { useMutation } from "react-apollo-hooks";
 import Cookie from "js-cookie";
 import redirect from "../../lib/redirect";
+import Link from "next/link";
 
 const INITIAL_STATE = {
   user: "",
@@ -34,7 +35,7 @@ function Login() {
       variables: { login: values.user, password: values.password }
     });
 
-    redirect({}, "/login");
+    redirect({}, "/");
   }
 
   return (
@@ -72,6 +73,10 @@ function Login() {
         </Auth.Form>
         <p>OR</p>
         <AuthBox />
+        <p>Don't have an account?</p>
+        <Link href="/signup">
+          <Auth.Button disabled={isSubmitting}>Sign Up</Auth.Button>
+        </Link>
       </Auth.Panel>
     </Auth.Container>
   );

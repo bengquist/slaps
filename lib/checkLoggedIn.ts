@@ -14,6 +14,6 @@ export default async (apolloClient: any) => {
 
     return data;
   } catch (e) {
-    return { yo: "ay" };
+    return {};
   }
 };

@@ -22,17 +22,14 @@ Router.onRouteChangeError = () => {
 function Header() {
   const client = useApolloClient();
 
-  const signout = () => {
+  const signout = async () => {
     document.cookie = Cookie.serialize("token", "", {
-      maxAge: -1 // Expire the cookie immediately
+      maxAge: -1
     });
 
-    // Force a reload of all the current queries now that the user is
-    // logged in, so we don't accidentally leave any state around.
-    client.cache.reset().then(() => {
-      // Redirect to a more useful page when signed out
-      redirect({}, "/login");
-    });
+    await client.cache.reset();
+
+    redirect({}, "/login");
   };
 
   return (
