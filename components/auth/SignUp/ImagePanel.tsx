@@ -1,11 +1,14 @@
 import React from "react";
 import * as Auth from "../styles";
+import * as firebase from "firebase/app";
 
 type Props = {
   onContinue: () => void;
 };
 
 function ImagePanel({ onContinue }: Props) {
+  const storage = firebase.storage();
+
   return (
     <Auth.Panel
       initial={{ opacity: 0, x: 100 }}

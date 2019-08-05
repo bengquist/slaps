@@ -5,6 +5,7 @@ import { GlobalStyle } from "../components/style/global";
 import { ApolloProvider } from "react-apollo";
 import { ApolloProvider as ApolloHooksProvider } from "react-apollo-hooks";
 import withApollo from "../lib/withApollo";
+import "../lib/initFirebase";
 
 class MyApp extends App {
   render() {
