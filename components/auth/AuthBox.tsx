@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import colors, { Colors } from "../style/colors";
+import { motion } from "framer-motion";
 
 type Props = {
   title: string;
@@ -8,7 +9,11 @@ type Props = {
 
 function AuthBox({ title }: Props) {
   return (
-    <Container>
+    <Container
+      initial={{ scale: 0.5 }}
+      animate={{ scale: 1 }}
+      exit={{ scale: 0 }}
+    >
       <p>{title}</p>
       <Panel>
         <Button background="facebook">FACEBOOK</Button>
@@ -22,7 +27,7 @@ function AuthBox({ title }: Props) {
 
 export default AuthBox;
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   width: 100%;
   max-width: 450px;
   background: ${colors.white};

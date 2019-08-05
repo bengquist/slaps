@@ -48,7 +48,11 @@ function InfoPanel({ onContinue }: Props) {
   }
 
   return (
-    <Auth.Panel>
+    <Auth.Panel
+      initial={{ opacity: 0, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -100 }}
+    >
       <Auth.Title>INFO</Auth.Title>
       <Auth.Form onSubmit={handleSubmit}>
         <Auth.FormBody>

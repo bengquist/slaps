@@ -1,6 +1,7 @@
 import { flexColumnCenter } from "../style/helpers";
 import styled from "styled-components";
 import colors from "../style/colors";
+import { motion } from "framer-motion";
 
 export const Container = styled.div`
   background: ${props => props.theme.gradient.dark};
@@ -9,7 +10,7 @@ export const Container = styled.div`
   padding: 1rem;
 `;
 
-export const Panel = styled.div`
+export const Panel = styled(motion.div)`
   width: 100%;
   color: ${colors.white};
   max-width: 400px;

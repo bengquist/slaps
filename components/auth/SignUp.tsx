@@ -4,7 +4,7 @@ import SignUpPanel from "./SignUpPanel";
 import InfoPanel from "./InfoPanel";
 
 function SignUp() {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
 
   function renderSteps() {
     switch (step) {
