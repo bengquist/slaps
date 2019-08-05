@@ -2,13 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import colors, { Colors } from "../style/colors";
 
-function AuthBox() {
+type Props = {
+  title: string;
+};
+
+function AuthBox({ title }: Props) {
   return (
     <Container>
-      <Button background="facebook">FACEBOOK</Button>
-      <Button background="soundcloud">SOUNDCLOUD</Button>
-      <Button background="twitter">TWITTER</Button>
-      <Button background="google">GOOGLE</Button>
+      <p>{title}</p>
+      <Panel>
+        <Button background="facebook">FACEBOOK</Button>
+        <Button background="soundcloud">SOUNDCLOUD</Button>
+        <Button background="twitter">TWITTER</Button>
+        <Button background="google">GOOGLE</Button>
+      </Panel>
     </Container>
   );
 }
@@ -16,11 +23,19 @@ function AuthBox() {
 export default AuthBox;
 
 const Container = styled.div`
-  background: ${colors.white};
   width: 100%;
   max-width: 450px;
-  padding: 2rem;
+  background: ${colors.white};
+  text-align: center;
+  color: ${colors.darkGray};
+  padding: 1rem 2rem 2rem 2rem;
+  border-radius: 0.25rem;
 
+  display: grid;
+  grid-gap: 1rem;
+`;
+
+const Panel = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   grid-gap: 0.5rem;

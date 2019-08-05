@@ -92,7 +92,7 @@ function SignUpPanel() {
         </Auth.Button>
       </Auth.Form>
       <p>OR</p>
-      <AuthBox />
+      <AuthBox title="Sign up with:" />
     </Auth.Panel>
   );
 }

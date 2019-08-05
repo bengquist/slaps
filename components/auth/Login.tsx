@@ -72,7 +72,7 @@ function Login() {
           </Auth.Button>
         </Auth.Form>
         <p>OR</p>
-        <AuthBox />
+        <AuthBox title="Log in with:" />
         <p>Don't have an account?</p>
         <Link href="/signup">
           <Auth.Button disabled={isSubmitting}>Sign Up</Auth.Button>
