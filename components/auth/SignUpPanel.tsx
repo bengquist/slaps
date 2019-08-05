@@ -12,8 +12,10 @@ type Props = {
 };
 
 const INITIAL_STATE = {
-  user: "",
-  password: ""
+  username: "a",
+  email: "a",
+  password: "a",
+  passwordConfirm: "a"
 };
 
 function SignUpPanel({ onSignUp }: Props) {
@@ -73,7 +75,6 @@ function SignUpPanel({ onSignUp }: Props) {
             <p>Password</p>
             <Auth.Input
               name="password"
-              style={{ fontSize: "1.125rem" }}
               type="password"
               onBlur={handleBlur}
               onChange={handleChange}
@@ -84,7 +85,6 @@ function SignUpPanel({ onSignUp }: Props) {
             <p>Confirm Password</p>
             <Auth.Input
               name="passwordConfirm"
-              style={{ fontSize: "1.125rem" }}
               type="password"
               onBlur={handleBlur}
               onChange={handleChange}

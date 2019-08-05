@@ -12,17 +12,17 @@ export const Container = styled.div`
 export const Panel = styled.div`
   width: 100%;
   color: ${colors.white};
-  max-width: 450px;
+  max-width: 400px;
 
   display: grid;
-  grid-gap: 1.5rem;
+  grid-gap: 1.25rem;
   justify-items: center;
 `;
 
 export const Title = styled.h1`
   color: ${colors.white};
   font-size: 2rem;
-  font-weight: normal;
+  font-weight: bold;
 `;
 
 export const Form = styled.form`
@@ -45,13 +45,22 @@ export const Label = styled.label`
   grid-gap: 0.25rem;
   color: ${colors.darkGray};
   font-size: 0.75rem;
+  font-weight: bold;
 `;
 
 export const Input = styled.input`
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.75rem;
   border: 1px solid ${colors.darkGray};
   border-radius: 0.25rem;
+`;
+
+export const TextArea = styled.textarea`
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid ${colors.darkGray};
+  border-radius: 0.25rem;
+  resize: none;
 `;
 
 export const Button = styled.button`
@@ -60,4 +69,5 @@ export const Button = styled.button`
   width: 100%;
   padding: 0.75rem;
   border-radius: 0.25rem;
+  font-weight: bold;
 `;

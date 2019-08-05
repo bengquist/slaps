@@ -48,7 +48,7 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: bolder; 
     font-style: bolder;
   }
-  body, h1, h2, h3, h4, h5, h6, p, ol, ul, input[type=text], input[type=email], button {
+  body, h1, h2, h3, h4, h5, h6, p, ol, ul, button {
     font-family: "pt-sans"
   }
   *, *:before, *:after {
@@ -68,16 +68,13 @@ export const GlobalStyle = createGlobalStyle`
     background: none;
     border: none;
     color: inherit;
+
     :hover {
       cursor: pointer;
     }
     :focus {
       outline: none;
     }
-  }
-  input {
-    border: none;
-    box-shadow: 0 0 0 1pt rgb(0, 0, 0, 0.3);
   }
   /* Links */
   a {

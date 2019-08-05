@@ -1,13 +1,13 @@
 import React from "react";
-import Login from "../components/auth/Login";
+import SignIn from "../components/auth/SignIn";
 import checkLoggedIn from "../lib/checkLoggedIn";
 import redirect from "../lib/redirect";
 
-const LoginPage = () => {
-  return <Login />;
+const SignInPage = () => {
+  return <SignIn />;
 };
 
-LoginPage.getInitialProps = async context => {
+SignInPage.getInitialProps = async context => {
   const { me } = await checkLoggedIn(context.apolloClient);
 
   if (me) {
@@ -17,4 +17,4 @@ LoginPage.getInitialProps = async context => {
   return {};
 };
 
-export default LoginPage;
+export default SignInPage;

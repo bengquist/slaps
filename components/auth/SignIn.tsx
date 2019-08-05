@@ -42,7 +42,7 @@ function Login() {
   return (
     <Auth.Container>
       <Auth.Panel>
-        <Auth.Title>LOG IN</Auth.Title>
+        <Auth.Title>SIGN IN</Auth.Title>
         <Auth.Form onSubmit={handleSubmit}>
           <Auth.FormBody>
             <Auth.Label>
@@ -59,7 +59,6 @@ function Login() {
               <p>Password</p>
               <Auth.Input
                 name="password"
-                style={{ fontSize: "1.125rem" }}
                 type="password"
                 onBlur={handleBlur}
                 onChange={handleChange}

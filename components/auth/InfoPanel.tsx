@@ -12,8 +12,10 @@ type Props = {
 };
 
 const INITIAL_STATE = {
-  user: "",
-  password: ""
+  firstName: "",
+  lastName: "",
+  location: "",
+  bio: ""
 };
 
 function InfoPanel({ onContinue }: Props) {
@@ -35,9 +37,10 @@ function InfoPanel({ onContinue }: Props) {
   async function submitHandler() {
     await toggleSignIn({
       variables: {
-        username: values.username,
-        email: values.email,
-        password: values.password
+        firstName: values.firstName,
+        lastName: values.lastName,
+        location: values.location,
+        bio: values.bio
       }
     });
 
@@ -46,59 +49,56 @@ function InfoPanel({ onContinue }: Props) {
 
   return (
     <Auth.Panel>
-      <Auth.Title>SIGN UP</Auth.Title>
+      <Auth.Title>INFO</Auth.Title>
       <Auth.Form onSubmit={handleSubmit}>
         <Auth.FormBody>
           <Auth.Label>
-            <p>Username</p>
+            <p>First Name</p>
             <Auth.Input
-              name="username"
+              name="firstName"
               type="text"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.username}
+              value={values.firstName}
             />
           </Auth.Label>
           <Auth.Label>
-            <p>Email</p>
+            <p>Last Name</p>
             <Auth.Input
-              name="email"
+              name="lastName"
               type="text"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.email}
+              value={values.lastName}
             />
           </Auth.Label>
           <Auth.Label>
-            <p>Password</p>
+            <p>Location</p>
             <Auth.Input
-              name="password"
-              style={{ fontSize: "1.125rem" }}
-              type="password"
+              name="location"
+              type="text"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.password}
+              value={values.location}
             />
           </Auth.Label>
           <Auth.Label>
-            <p>Confirm Password</p>
-            <Auth.Input
-              name="passwordConfirm"
-              style={{ fontSize: "1.125rem" }}
-              type="password"
+            <p>Bio</p>
+            <Auth.TextArea
+              name="bio"
+              type="text"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.passwordConfirm}
+              value={values.bio}
+              rows={6}
             />
           </Auth.Label>
         </Auth.FormBody>
 
         <Auth.Button type="submit" disabled={isSubmitting}>
-          SIGN UP
+          CONTINUE
         </Auth.Button>
       </Auth.Form>
-      <p>OR</p>
-      <AuthBox title="Sign up with:" />
     </Auth.Panel>
   );
 }

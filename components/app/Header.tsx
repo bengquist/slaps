@@ -29,7 +29,7 @@ function Header() {
 
     await client.cache.reset();
 
-    redirect({}, "/login");
+    redirect({}, "/signin");
   };
 
   return (
@@ -43,7 +43,7 @@ function Header() {
 
         <Section>
           <>
-            <Link href="/login">
+            <Link href="/signin">
               <Option>Log In</Option>
             </Link>
             <Link href="/signup">
