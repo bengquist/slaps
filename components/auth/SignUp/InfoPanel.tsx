@@ -1,24 +1,23 @@
 import React from "react";
-import * as Auth from "./styles";
-import useFormValidation from "../hooks/useFormValidation";
-import { validateSignUp } from "./helpers";
+import * as Auth from "../styles";
+import useFormValidation from "../../hooks/useFormValidation";
+import { validateSignUp } from "../helpers";
 import { useMutation } from "react-apollo-hooks";
 import Cookie from "js-cookie";
-import { SIGN_UP } from "./mutation";
-import AuthBox from "./AuthBox";
+import { SIGN_UP } from "../mutation";
 
 type Props = {
-  onSignUp: () => void;
+  onContinue: () => void;
 };
 
 const INITIAL_STATE = {
-  username: "a",
-  email: "a",
-  password: "a",
-  passwordConfirm: "a"
+  firstName: "",
+  lastName: "",
+  location: "",
+  bio: ""
 };
 
-function SignUpPanel({ onSignUp }: Props) {
+function InfoPanel({ onContinue }: Props) {
   const {
     handleSubmit,
     handleChange,
@@ -28,22 +27,8 @@ function SignUpPanel({ onSignUp }: Props) {
     isSubmitting
   } = useFormValidation(INITIAL_STATE, validateSignUp, submitHandler);
 
-  const toggleSignIn = useMutation(SIGN_UP, {
-    update: (_, { data }) => {
-      Cookie.set("token", data.signUp.token);
-    }
-  });
-
   async function submitHandler() {
-    // await toggleSignIn({
-    //   variables: {
-    //     username: values.username,
-    //     email: values.email,
-    //     password: values.password
-    //   }
-    // });
-
-    onSignUp();
+    onContinue();
   }
 
   return (
@@ -52,59 +37,58 @@ function SignUpPanel({ onSignUp }: Props) {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -100 }}
     >
-      <Auth.Title>SIGN UP</Auth.Title>
+      <Auth.Title>INFO</Auth.Title>
       <Auth.Form onSubmit={handleSubmit}>
         <Auth.FormBody>
           <Auth.Label>
-            <p>Username</p>
+            <p>First Name</p>
             <Auth.Input
-              name="username"
+              name="firstName"
               type="text"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.username}
+              value={values.firstName}
             />
           </Auth.Label>
           <Auth.Label>
-            <p>Email</p>
+            <p>Last Name</p>
             <Auth.Input
-              name="email"
+              name="lastName"
               type="text"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.email}
+              value={values.lastName}
             />
           </Auth.Label>
           <Auth.Label>
-            <p>Password</p>
+            <p>Location</p>
             <Auth.Input
-              name="password"
-              type="password"
+              name="location"
+              type="text"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.password}
+              value={values.location}
             />
           </Auth.Label>
           <Auth.Label>
-            <p>Confirm Password</p>
-            <Auth.Input
-              name="passwordConfirm"
-              type="password"
+            <p>Bio</p>
+            <Auth.TextArea
+              name="bio"
+              type="text"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.passwordConfirm}
+              value={values.bio}
+              rows={6}
             />
           </Auth.Label>
         </Auth.FormBody>
 
         <Auth.Button type="submit" disabled={isSubmitting}>
-          SIGN UP
+          CONTINUE
         </Auth.Button>
       </Auth.Form>
-      <p>OR</p>
-      <AuthBox title="Sign up with:" />
     </Auth.Panel>
   );
 }
 
-export default SignUpPanel;
+export default InfoPanel;

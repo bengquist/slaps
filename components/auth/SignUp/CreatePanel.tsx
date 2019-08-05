@@ -1,24 +1,24 @@
 import React from "react";
-import * as Auth from "./styles";
-import useFormValidation from "../hooks/useFormValidation";
-import { validateSignUp } from "./helpers";
+import * as Auth from "../styles";
+import useFormValidation from "../../hooks/useFormValidation";
+import { validateSignUp } from "../helpers";
 import { useMutation } from "react-apollo-hooks";
 import Cookie from "js-cookie";
-import { SIGN_UP } from "./mutation";
-import AuthBox from "./AuthBox";
+import { SIGN_UP } from "../mutation";
+import AuthBox from "../AuthBox";
 
 type Props = {
-  onContinue: () => void;
+  onSignUp: () => void;
 };
 
 const INITIAL_STATE = {
-  firstName: "",
-  lastName: "",
-  location: "",
-  bio: ""
+  username: "a",
+  email: "a",
+  password: "a",
+  passwordConfirm: "a"
 };
 
-function InfoPanel({ onContinue }: Props) {
+function SignUpPanel({ onSignUp }: Props) {
   const {
     handleSubmit,
     handleChange,
@@ -35,16 +35,15 @@ function InfoPanel({ onContinue }: Props) {
   });
 
   async function submitHandler() {
-    await toggleSignIn({
-      variables: {
-        firstName: values.firstName,
-        lastName: values.lastName,
-        location: values.location,
-        bio: values.bio
-      }
-    });
+    // await toggleSignIn({
+    //   variables: {
+    //     username: values.username,
+    //     email: values.email,
+    //     password: values.password
+    //   }
+    // });
 
-    onContinue();
+    onSignUp();
   }
 
   return (
@@ -53,58 +52,59 @@ function InfoPanel({ onContinue }: Props) {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -100 }}
     >
-      <Auth.Title>INFO</Auth.Title>
+      <Auth.Title>SIGN UP</Auth.Title>
       <Auth.Form onSubmit={handleSubmit}>
         <Auth.FormBody>
           <Auth.Label>
-            <p>First Name</p>
+            <p>Username</p>
             <Auth.Input
-              name="firstName"
+              name="username"
               type="text"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.firstName}
+              value={values.username}
             />
           </Auth.Label>
           <Auth.Label>
-            <p>Last Name</p>
+            <p>Email</p>
             <Auth.Input
-              name="lastName"
+              name="email"
               type="text"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.lastName}
+              value={values.email}
             />
           </Auth.Label>
           <Auth.Label>
-            <p>Location</p>
+            <p>Password</p>
             <Auth.Input
-              name="location"
-              type="text"
+              name="password"
+              type="password"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.location}
+              value={values.password}
             />
           </Auth.Label>
           <Auth.Label>
-            <p>Bio</p>
-            <Auth.TextArea
-              name="bio"
-              type="text"
+            <p>Confirm Password</p>
+            <Auth.Input
+              name="passwordConfirm"
+              type="password"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.bio}
-              rows={6}
+              value={values.passwordConfirm}
             />
           </Auth.Label>
         </Auth.FormBody>
 
         <Auth.Button type="submit" disabled={isSubmitting}>
-          CONTINUE
+          CREATE ACCOUNT
         </Auth.Button>
       </Auth.Form>
+      <p>OR</p>
+      <AuthBox title="Sign up with:" />
     </Auth.Panel>
   );
 }
 
-export default InfoPanel;
+export default SignUpPanel;
