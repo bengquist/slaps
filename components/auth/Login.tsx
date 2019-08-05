@@ -8,6 +8,7 @@ import { useMutation } from "react-apollo-hooks";
 import Cookie from "js-cookie";
 import redirect from "../../lib/redirect";
 import Link from "next/link";
+import colors from "../style/colors";
 
 const INITIAL_STATE = {
   user: "",
@@ -67,16 +68,29 @@ function Login() {
             </Auth.Label>
           </Auth.FormBody>
 
-          <Auth.Button type="submit" disabled={isSubmitting}>
-            LOG IN
-          </Auth.Button>
+          <div>
+            <Auth.Button type="submit" disabled={isSubmitting}>
+              LOG IN
+            </Auth.Button>
+
+            <Link href="/signup">
+              <div
+                style={{
+                  color: colors.black,
+                  textAlign: "center",
+                  marginTop: ".25rem"
+                }}
+              >
+                <span>Not a member?</span>
+                <button type="button" style={{ color: colors.red }}>
+                  Create account
+                </button>
+              </div>
+            </Link>
+          </div>
         </Auth.Form>
         <p>OR</p>
         <AuthBox title="Log in with:" />
-        <p>Don't have an account?</p>
-        <Link href="/signup">
-          <Auth.Button disabled={isSubmitting}>Sign Up</Auth.Button>
-        </Link>
       </Auth.Panel>
     </Auth.Container>
   );

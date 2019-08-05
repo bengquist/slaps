@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import * as Auth from "./styles";
 import SignUpPanel from "./SignUpPanel";
+import InfoPanel from "./InfoPanel";
 
 function SignUp() {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
 
   function renderSteps() {
     switch (step) {
-      case 0:
-        return <SignUpPanel />;
+      case 1:
+        return <SignUpPanel onSignUp={() => setStep(2)} />;
+      case 2:
+        return <InfoPanel onContinue={() => setStep(3)} />;
       default:
         return null;
     }

@@ -8,7 +8,7 @@ import { SIGN_UP } from "./mutation";
 import AuthBox from "./AuthBox";
 
 type Props = {
-  onSignUp: () => void;
+  onContinue: () => void;
 };
 
 const INITIAL_STATE = {
@@ -16,7 +16,7 @@ const INITIAL_STATE = {
   password: ""
 };
 
-function SignUpPanel({ onSignUp }: Props) {
+function InfoPanel({ onContinue }: Props) {
   const {
     handleSubmit,
     handleChange,
@@ -33,15 +33,15 @@ function SignUpPanel({ onSignUp }: Props) {
   });
 
   async function submitHandler() {
-    // await toggleSignIn({
-    //   variables: {
-    //     username: values.username,
-    //     email: values.email,
-    //     password: values.password
-    //   }
-    // });
+    await toggleSignIn({
+      variables: {
+        username: values.username,
+        email: values.email,
+        password: values.password
+      }
+    });
 
-    onSignUp();
+    onContinue();
   }
 
   return (
@@ -103,4 +103,4 @@ function SignUpPanel({ onSignUp }: Props) {
   );
 }
 
-export default SignUpPanel;
+export default InfoPanel;

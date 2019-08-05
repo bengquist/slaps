@@ -4,7 +4,7 @@ import colors from "../style/colors";
 
 export const Container = styled.div`
   background: ${props => props.theme.gradient.dark};
-  height: 100vh;
+  min-height: 100vh;
   ${flexColumnCenter};
   padding: 1rem;
 `;
@@ -12,6 +12,7 @@ export const Container = styled.div`
 export const Panel = styled.div`
   width: 100%;
   color: ${colors.white};
+  max-width: 450px;
 
   display: grid;
   grid-gap: 1rem;
@@ -27,7 +28,6 @@ export const Title = styled.h1`
 export const Form = styled.form`
   background: ${colors.white};
   width: 100%;
-  max-width: 450px;
   padding: 2rem;
   border-radius: 0.25rem;
 
@@ -57,6 +57,7 @@ export const Input = styled.input`
 export const Button = styled.button`
   background: ${colors.red};
   color: ${colors.white};
+  width: 100%;
   padding: 0.75rem;
   border-radius: 0.25rem;
 `;
