@@ -16,7 +16,7 @@ function ImagePanel({ onContinue }: Props) {
       <Auth.Form>
         <Auth.FormBody>
           <Auth.Title>PROFILE IMAGE</Auth.Title>
-          <Dropzone />
+          <Dropzone onFileAdded={(file: File) => console.log(file)} />
           <Auth.Button type="submit">UPLOAD</Auth.Button>
         </Auth.FormBody>
       </Auth.Form>
