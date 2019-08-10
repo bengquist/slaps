@@ -2,6 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import colors, { Colors } from "../style/colors";
 import { motion } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFacebookSquare,
+  faSoundcloud,
+  faTwitter,
+  faGoogle
+} from "@fortawesome/free-brands-svg-icons";
 
 type Props = {
   title: string;
@@ -16,10 +23,18 @@ function AuthBox({ title }: Props) {
     >
       <p>{title}</p>
       <Panel>
-        <Button background="facebook">FACEBOOK</Button>
-        <Button background="soundcloud">SOUNDCLOUD</Button>
-        <Button background="twitter">TWITTER</Button>
-        <Button background="google">GOOGLE</Button>
+        <Button background="facebook">
+          <FontAwesomeIcon icon={faFacebookSquare} />
+        </Button>
+        <Button background="soundcloud">
+          <FontAwesomeIcon icon={faSoundcloud} />
+        </Button>
+        <Button background="twitter">
+          <FontAwesomeIcon icon={faTwitter} />
+        </Button>
+        <Button background="google">
+          <FontAwesomeIcon icon={faGoogle} />
+        </Button>
       </Panel>
     </Container>
   );
@@ -33,7 +48,7 @@ const Container = styled(motion.div)`
   background: ${colors.white};
   text-align: center;
   color: ${colors.darkGray};
-  padding: 1rem 2rem 2rem 2rem;
+  padding: 2rem 1.5rem;
   border-radius: 0.25rem;
 
   display: grid;
@@ -49,6 +64,7 @@ const Panel = styled.div`
 const Button = styled.button<{ background: Colors }>`
   background: ${props => colors[props.background || "red"]};
   color: ${colors.white};
-  padding: 0.75rem;
+  padding: 0.25rem;
   border-radius: 0.25rem;
+  font-size: 1.5rem;
 `;

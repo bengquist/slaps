@@ -29,7 +29,7 @@ export const Title = styled.h1`
 export const Form = styled.form`
   background: ${colors.white};
   width: 100%;
-  padding: 2rem;
+  padding: 2rem 1.5rem;
   border-radius: 0.25rem;
 
   display: grid;
