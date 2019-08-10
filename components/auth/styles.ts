@@ -21,9 +21,10 @@ export const Panel = styled(motion.div)`
 `;
 
 export const Title = styled.h1`
-  color: ${colors.white};
+  color: ${colors.darkGray};
   font-size: 2rem;
   font-weight: bold;
+  text-align: center;
 `;
 
 export const Form = styled.form`

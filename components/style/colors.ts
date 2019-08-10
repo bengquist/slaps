@@ -23,6 +23,7 @@ export default {
   twitter: "#1DA1F2",
   google: "#4885ED",
   paypal: "#2699FB",
+  shadedWhite: "#e7e7e7",
   white: "#ffffff",
   black: "#101010"
 };

@@ -37,9 +37,9 @@ function InfoPanel({ onContinue }: Props) {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -100 }}
     >
-      <Auth.Title>INFO</Auth.Title>
       <Auth.Form onSubmit={handleSubmit}>
         <Auth.FormBody>
+          <Auth.Title>INFO</Auth.Title>
           <Auth.Label>
             <p>First Name</p>
             <Auth.Input

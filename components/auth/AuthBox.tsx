@@ -48,7 +48,7 @@ const Container = styled(motion.div)`
   background: ${colors.white};
   text-align: center;
   color: ${colors.darkGray};
-  padding: 2rem 1.5rem;
+  padding: 1.5rem;
   border-radius: 0.25rem;
 
   display: grid;

@@ -52,9 +52,9 @@ function SignUpPanel({ onSignUp }: Props) {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -100 }}
     >
-      <Auth.Title>SIGN UP</Auth.Title>
       <Auth.Form onSubmit={handleSubmit}>
         <Auth.FormBody>
+          <Auth.Title>SIGN UP</Auth.Title>
           <Auth.Label>
             <p>Username</p>
             <Auth.Input

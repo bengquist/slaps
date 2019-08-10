@@ -5,7 +5,7 @@ import InfoPanel from "./InfoPanel";
 import ImagePanel from "./ImagePanel";
 
 function SignUp() {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(3);
 
   function renderSteps() {
     switch (step) {
