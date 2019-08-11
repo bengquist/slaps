@@ -5,9 +5,12 @@ import { validateSignUp } from "../helpers";
 import { useMutation } from "react-apollo-hooks";
 import Cookie from "js-cookie";
 import { SIGN_UP } from "../mutation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
   onContinue: () => void;
+  onBack: () => void;
 };
 
 const INITIAL_STATE = {
@@ -17,7 +20,7 @@ const INITIAL_STATE = {
   bio: ""
 };
 
-function InfoPanel({ onContinue }: Props) {
+function InfoPanel({ onContinue, onBack }: Props) {
   const {
     handleSubmit,
     handleChange,
@@ -39,7 +42,12 @@ function InfoPanel({ onContinue }: Props) {
     >
       <Auth.Form onSubmit={handleSubmit}>
         <Auth.FormBody>
-          <Auth.Title>INFO</Auth.Title>
+          <Auth.TitleContainer>
+            <Auth.BackButton type="button" onClick={onBack}>
+              <FontAwesomeIcon icon={faChevronLeft} /> BACK
+            </Auth.BackButton>
+            <Auth.Title>INFO</Auth.Title>
+          </Auth.TitleContainer>
           <Auth.Label>
             <p>First Name</p>
             <Auth.Input

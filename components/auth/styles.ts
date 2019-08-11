@@ -20,11 +20,24 @@ export const Panel = styled(motion.div)`
   justify-items: center;
 `;
 
+export const TitleContainer = styled.h1`
+  position: relative;
+`;
+
 export const Title = styled.h1`
   color: ${colors.darkGray};
   font-size: 2rem;
   font-weight: bold;
   text-align: center;
+`;
+
+export const BackButton = styled.button`
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+
+  color: ${colors.red};
 `;
 
 export const Form = styled.form`

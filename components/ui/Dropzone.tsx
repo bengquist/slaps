@@ -8,9 +8,10 @@ type ButtonEvent = FormEvent<HTMLButtonElement> & {
 
 type Props = {
   onFileAdded: (file: File) => void;
+  image: string;
 };
 
-function Dropzone({ onFileAdded }: Props) {
+function Dropzone({ onFileAdded, image }: Props) {
   const [isHovered, setIsHovered] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -27,6 +28,11 @@ function Dropzone({ onFileAdded }: Props) {
     setIsHovered(false);
   }
 
+  function stopEvent(event: FormEvent<HTMLButtonElement>) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
   function onDragOver(event: FormEvent<HTMLButtonElement>) {
     stopEvent(event);
     setIsHovered(true);
@@ -35,11 +41,6 @@ function Dropzone({ onFileAdded }: Props) {
   function onDragLeave(event: FormEvent<HTMLButtonElement>) {
     stopEvent(event);
     setIsHovered(false);
-  }
-
-  function stopEvent(event: FormEvent<HTMLButtonElement>) {
-    event.preventDefault();
-    event.stopPropagation();
   }
 
   function changeHandler(event: FormEvent<HTMLInputElement>) {
@@ -66,7 +67,11 @@ function Dropzone({ onFileAdded }: Props) {
       hovered={isHovered}
     >
       <input type="file" ref={inputRef} onChange={changeHandler} />
-      <div className="drag-files">Drag file to upload</div>
+      {image ? (
+        <Image src={image} />
+      ) : (
+        <Placeholder className="drag-files">Drag file to upload</Placeholder>
+      )}
     </Container>
   );
 }
@@ -75,15 +80,9 @@ export default Dropzone;
 
 const Container = styled.button<{ hovered: boolean }>`
   width: 100%;
-  padding-top: 25%;
-  padding-bottom: 25%;
-  background-color: ${colors.shadedWhite};
-  color: ${colors.lightGray};
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 0.25rem;
-  border: 1px solid ${colors.lightGray};
   transition: transform 0.3s;
 
   transform: ${props => (props.hovered ? "scale(0.95)" : "scale(1)")};
@@ -95,4 +94,19 @@ const Container = styled.button<{ hovered: boolean }>`
   > input {
     display: none;
   }
+`;
+
+const Placeholder = styled.div`
+  width: 100%;
+  padding-top: 25%;
+  padding-bottom: 25%;
+  border-radius: 0.25rem;
+  border: 1px solid ${colors.lightGray};
+  background-color: ${colors.shadedWhite};
+  color: ${colors.lightGray};
+`;
+
+const Image = styled.img`
+  object-fit: contain;
+  border-radius: 0.25rem;
 `;
