@@ -22,12 +22,14 @@ export const UPDATE_USER = gql`
     $lastName: String
     $location: String
     $bio: String
+    $image: String
   ) {
     updateUser(
       firstName: $firstName
       lastName: $lastName
       location: $location
       bio: $bio
+      image: $image
     ) {
       _id
       username
@@ -35,6 +37,7 @@ export const UPDATE_USER = gql`
       lastName
       location
       bio
+      image
     }
   }
 `;

@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as Auth from "../styles/styles";
 import Dropzone from "../../ui/Dropzone";
 import { preventDefault } from "../../../lib/eventHelpers";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { storage } from "../../../lib/firebase.config";
+import { GET_ME } from "../query";
+import { useQuery, useMutation } from "react-apollo-hooks";
+import { UPDATE_USER } from "../mutation";
 
 type Props = {
   onContinue: () => void;
@@ -12,11 +15,40 @@ type Props = {
 };
 
 function ImagePanel({ onContinue, onBack }: Props) {
+  const user = useQuery(GET_ME);
+  const toggleUpdateUser = useMutation(UPDATE_USER, {
+    update: (proxy, { data }) => {
+      const userData = proxy.readQuery({ query: GET_ME });
+
+      userData.me = data.updateUser;
+    }
+  });
+
   const [image, setImage] = useState();
 
-  function uploadHandler() {
+  useEffect(() => {
+    if (user.data.me) {
+      setImage(user.data.me.image);
+    }
+  }, [user]);
+
+  async function uploadHandler() {
+    const mainImage = storage.ref().child(image.name);
+
+    await mainImage.put(image);
+
+    const imageUrl = await mainImage.getDownloadURL();
+
+    await toggleUpdateUser({
+      variables: {
+        image: imageUrl
+      }
+    });
+
     onContinue();
   }
+
+  const imageUrl = image && image.name ? URL.createObjectURL(image) : image;
 
   return (
     <Auth.Panel
@@ -33,8 +65,8 @@ function ImagePanel({ onContinue, onBack }: Props) {
             <Auth.Title>PROFILE IMAGE</Auth.Title>
           </Auth.TitleContainer>
           <Dropzone
-            onFileAdded={(file: File) => setImage(URL.createObjectURL(file))}
-            image={image}
+            onFileAdded={(file: File) => setImage(file)}
+            image={imageUrl}
           />
           <Auth.Button type="submit">CONTINUE</Auth.Button>
         </Auth.FormBody>

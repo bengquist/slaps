@@ -15,6 +15,15 @@ type Props = {
 
 function InfoPanel({ onContinue, onBack }: Props) {
   const user = useQuery(GET_ME);
+  const toggleUpdateUser = useMutation(UPDATE_USER, {
+    update: (proxy, { data }) => {
+      const userData = proxy.readQuery({ query: GET_ME });
+
+      userData.me = data.updateUser;
+
+      proxy.writeQuery({ query: GET_ME, data });
+    }
+  });
 
   const INITIAL_STATE = user.data.me || {
     firstName: "",
@@ -30,16 +39,6 @@ function InfoPanel({ onContinue, onBack }: Props) {
     values,
     isSubmitting
   } = useFormValidation(INITIAL_STATE, submitHandler);
-
-  const toggleUpdateUser = useMutation(UPDATE_USER, {
-    update: (proxy, { data }) => {
-      const userData = proxy.readQuery({ query: GET_ME });
-
-      userData.me = data.updateUser;
-
-      // proxy.writeQuery({ query: GET_ME, data });
-    }
-  });
 
   async function submitHandler() {
     console.log(values.firstName, values.lastName, values.location, values.bio);

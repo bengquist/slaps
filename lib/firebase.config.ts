@@ -6,11 +6,13 @@ const config = {
   authDomain: "slaps-db.firebaseapp.com",
   databaseURL: "https://slaps-db.firebaseio.com",
   projectId: "slaps-db",
-  storageBucket: "",
+  storageBucket: "gs://slaps-db.appspot.com",
   messagingSenderId: "1079117281033",
   appId: "1:1079117281033:web:feb738fe4200d2fe"
 };
 
-const storage = firebase.initializeApp(config).storage();
+if (!firebase.apps.length) firebase.initializeApp(config);
+
+const storage = firebase.storage();
 
 export { storage };
