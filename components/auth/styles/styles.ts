@@ -20,7 +20,7 @@ export const Panel = styled(motion.div)`
   justify-items: center;
 `;
 
-export const TitleContainer = styled.h1`
+export const TitleContainer = styled.div`
   position: relative;
 `;
 

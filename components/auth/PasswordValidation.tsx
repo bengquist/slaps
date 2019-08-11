@@ -31,7 +31,11 @@ function PasswordValidation({ password, passwordConfirm }: Props) {
   return (
     <Container>
       {validation.checks.map(check => (
-        <ValidationMessage validated={check.valid} message={check.message} />
+        <ValidationMessage
+          key={check.message}
+          validated={check.valid}
+          message={check.message}
+        />
       ))}
       {passwordConfirm !== undefined && (
         <ValidationMessage

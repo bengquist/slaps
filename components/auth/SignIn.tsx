@@ -24,7 +24,7 @@ function Login() {
     values,
     errors,
     isSubmitting
-  } = useFormValidation(INITIAL_STATE, validateLogin, submitHandler);
+  } = useFormValidation(INITIAL_STATE, submitHandler, validateLogin);
 
   const toggleSignIn = useMutation(SIGN_IN, {
     update: (_, { data }) => {

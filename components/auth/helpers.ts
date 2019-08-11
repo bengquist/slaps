@@ -1,7 +1,7 @@
 import EmailValidator from "email-validator";
+import { validatePassword } from "./PasswordValidation";
 
 export const usernameRegEx = /^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
-export const passwordRegEx = /^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
 
 export function validateLogin(values: any) {
   let errors = { user: "", password: "" };
@@ -39,6 +39,8 @@ export function validateSignUp(values: any) {
   // Password Errors
   if (!values.password) {
     errors.password = "Required";
+  } else if (!validatePassword(values.password).valid) {
+    errors.password = "Invalid";
   }
 
   // Password Confirm Errors

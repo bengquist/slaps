@@ -4,7 +4,7 @@ import useFormValidation from "../../hooks/useFormValidation";
 import { validateSignUp } from "../helpers";
 import { useMutation } from "react-apollo-hooks";
 import Cookie from "js-cookie";
-import { SIGN_UP } from "../mutation";
+import { SIGN_UP, UPDATE_USER } from "../mutation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import AuthInput from "../styles/AuthInput";
@@ -27,11 +27,25 @@ function InfoPanel({ onContinue, onBack }: Props) {
     handleChange,
     handleBlur,
     values,
-    errors,
     isSubmitting
   } = useFormValidation(INITIAL_STATE, validateSignUp, submitHandler);
 
+  const toggleUpdateUser = useMutation(UPDATE_USER, {
+    update: (_, { data }) => {
+      Cookie.set("token", data.signUp.token);
+    }
+  });
+
   async function submitHandler() {
+    await toggleUpdateUser({
+      variables: {
+        firstName: values.firstName,
+        lastName: values.lastName,
+        location: values.location,
+        bio: values.bio
+      }
+    });
+
     onContinue();
   }
 

@@ -2,8 +2,8 @@ import { useState, useEffect, FormEvent } from "react";
 
 function useFormValidation(
   initialState: any,
-  validate: (values: any) => any,
-  onSubmit: () => void
+  onSubmit: () => void,
+  validate?: (values: any) => any
 ) {
   const [values, setValues] = useState(initialState);
   const [errors, setErrors] = useState(initialState);
@@ -23,15 +23,19 @@ function useFormValidation(
     }
   }, [errors]);
 
-  function handleChange(event: FormEvent<HTMLInputElement>) {
+  function handleChange(
+    event: FormEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
     setValues({
       ...values,
       [event.currentTarget.name]: event.currentTarget.value
     });
   }
 
-  function handleBlur(event: FormEvent<HTMLInputElement>) {
-    const validationErrors = validate(values);
+  function handleBlur(
+    event: FormEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
+    const validationErrors = validate && validate(values);
     setFocusList([...focusList, event.currentTarget.name]);
 
     const filteredErrors: any = {};
@@ -47,12 +51,12 @@ function useFormValidation(
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const validationErrors = validate(values);
+    const validationErrors = validate && validate(values);
     setErrors(validationErrors);
 
     setSubmitting(true);
 
-    if (Object.entries(validationErrors).length === 0) {
+    if (Object.values(validationErrors).every(value => value === "")) {
       await onSubmit();
     }
 

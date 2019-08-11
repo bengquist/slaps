@@ -31,7 +31,7 @@ function SignUpPanel({ onSignUp }: Props) {
     values,
     errors,
     isSubmitting
-  } = useFormValidation(INITIAL_STATE, validateSignUp, submitHandler);
+  } = useFormValidation(INITIAL_STATE, submitHandler, validateSignUp);
 
   const toggleSignUp = useMutation(SIGN_UP, {
     update: (_, { data }) => {

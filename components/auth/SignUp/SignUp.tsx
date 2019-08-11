@@ -6,7 +6,7 @@ import ImagePanel from "./ImagePanel";
 import ProgressBar from "../../ui/ProgressBar";
 
 function SignUp() {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
