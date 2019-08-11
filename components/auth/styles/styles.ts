@@ -4,7 +4,7 @@ import colors from "../../style/colors";
 import { motion } from "framer-motion";
 
 export const Container = styled.div`
-  background: ${props => props.theme.gradient.dark};
+  background: ${props => props.theme.gradient && props.theme.gradient.dark};
   min-height: 100vh;
   ${flexColumnCenter};
   padding: 1rem;
