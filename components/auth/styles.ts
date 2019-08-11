@@ -38,6 +38,12 @@ export const BackButton = styled.button`
   bottom: 0;
 
   color: ${colors.red};
+  transition: 0.2s opacity;
+
+  :hover,
+  :focus {
+    opacity: 0.8;
+  }
 `;
 
 export const Form = styled.form`
@@ -85,4 +91,10 @@ export const Button = styled.button`
   padding: 0.75rem;
   border-radius: 0.25rem;
   font-weight: bold;
+  transition: 0.2s opacity;
+
+  :hover,
+  :focus {
+    opacity: 0.8;
+  }
 `;
