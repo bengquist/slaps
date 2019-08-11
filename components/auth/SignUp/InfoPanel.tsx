@@ -1,7 +1,7 @@
 import React from "react";
 import * as Auth from "../styles/styles";
 import useFormValidation from "../../hooks/useFormValidation";
-import { useMutation, useQuery } from "react-apollo-hooks";
+import { useMutation, useQuery } from "@apollo/react-hooks";
 import { UPDATE_USER } from "../mutation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
@@ -15,7 +15,7 @@ type Props = {
 
 function InfoPanel({ onContinue, onBack }: Props) {
   const user = useQuery(GET_ME);
-  const toggleUpdateUser = useMutation(UPDATE_USER, {
+  const [toggleUpdateUser] = useMutation(UPDATE_USER, {
     update: (proxy, { data }) => {
       const userData = proxy.readQuery({ query: GET_ME });
 

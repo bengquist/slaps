@@ -6,7 +6,7 @@ import NProgress from "nprogress";
 import colors from "../style/colors";
 import redirect from "../../lib/redirect";
 import Cookie from "cookie";
-import { useApolloClient } from "react-apollo-hooks";
+import { useApolloClient } from "@apollo/react-hooks";
 import checkLoggedIn from "../../lib/checkLoggedIn";
 
 Router.onRouteChangeStart = () => {

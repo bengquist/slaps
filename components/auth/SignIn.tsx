@@ -4,7 +4,7 @@ import * as Auth from "./styles/styles";
 import useFormValidation from "../hooks/useFormValidation";
 import { validateLogin } from "./helpers";
 import { SIGN_IN } from "./mutation";
-import { useMutation } from "react-apollo-hooks";
+import { useMutation } from "@apollo/react-hooks";
 import Cookie from "js-cookie";
 import redirect from "../../lib/redirect";
 import Link from "next/link";
@@ -26,7 +26,7 @@ function Login() {
     isSubmitting
   } = useFormValidation(INITIAL_STATE, submitHandler, validateLogin);
 
-  const toggleSignIn = useMutation(SIGN_IN, {
+  const [toggleSignIn] = useMutation(SIGN_IN, {
     update: (_, { data }) => {
       Cookie.set("token", data.signIn.token);
     }

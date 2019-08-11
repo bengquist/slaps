@@ -2,7 +2,7 @@ import React from "react";
 import * as Auth from "../styles/styles";
 import useFormValidation from "../../hooks/useFormValidation";
 import { validateSignUp } from "../helpers";
-import { useMutation } from "react-apollo-hooks";
+import { useMutation } from "@apollo/react-hooks";
 import Cookie from "js-cookie";
 import { SIGN_UP } from "../mutation";
 import AuthBox from "../AuthBox";
@@ -33,7 +33,7 @@ function SignUpPanel({ onSignUp }: Props) {
     isSubmitting
   } = useFormValidation(INITIAL_STATE, submitHandler, validateSignUp);
 
-  const toggleSignUp = useMutation(SIGN_UP, {
+  const [toggleSignUp] = useMutation(SIGN_UP, {
     update: (_, { data }) => {
       Cookie.set("token", data.signUp.token);
     }

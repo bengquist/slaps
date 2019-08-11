@@ -30,7 +30,6 @@
     "nprogress": "^0.2.0",
     "react": "^16.8.6",
     "react-apollo": "^2.5.8",
-    "react-apollo-hooks": "^0.4.5",
     "react-dom": "^16.8.6",
     "styled-components": "^4.3.2",
     "tls": "^0.0.1"

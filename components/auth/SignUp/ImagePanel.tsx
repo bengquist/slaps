@@ -6,7 +6,7 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { storage } from "../../../lib/firebase.config";
 import { GET_ME } from "../query";
-import { useQuery, useMutation } from "react-apollo-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 import { UPDATE_USER } from "../mutation";
 import Router from "next/router";
 
@@ -17,7 +17,7 @@ type Props = {
 
 function ImagePanel({ onContinue, onBack }: Props) {
   const user = useQuery(GET_ME);
-  const toggleUpdateUser = useMutation(UPDATE_USER, {
+  const [toggleUpdateUser] = useMutation(UPDATE_USER, {
     update: (proxy, { data }) => {
       const userData = proxy.readQuery({ query: GET_ME });
 
