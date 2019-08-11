@@ -18,7 +18,7 @@ export default {
   darkGray: "#363636",
   orange: "#f05e23",
   dangerRed: "#CA0B00",
-  successGreen: "#4BB543",
+  successGreen: "#12a666",
   pink: "#FF4A4A",
   facebook: "#3B5998",
   soundcloud: "#FF7700",
