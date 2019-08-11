@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import Router from "next/router";
 import AuthInput from "../styles/AuthInput";
+import PasswordValidation from "../PasswordValidation";
 
 type Props = {
   onSignUp: () => void;
@@ -111,6 +112,10 @@ function SignUpPanel({ onSignUp }: Props) {
               error={errors.passwordConfirm}
             />
           </Auth.Label>
+          <PasswordValidation
+            password={values.password}
+            passwordConfirm={values.passwordConfirm}
+          />
         </Auth.FormBody>
 
         <Auth.Button type="submit" disabled={isSubmitting}>

@@ -11,7 +11,10 @@ type Props = ComponentPropsWithoutRef<"input"> & {
 function AuthInput({ error, ...props }: Props) {
   return (
     <Container>
-      <Input {...props} />
+      <Input
+        style={{ borderColor: error ? colors.dangerRed : colors.darkGray }}
+        {...props}
+      />
       {error && (
         <ErrorContainer>
           <p>{error}</p>
@@ -35,5 +38,5 @@ const ErrorContainer = styled.div`
 
   ${flexCenter};
   padding-right: 0.5rem;
-  color: ${colors.red};
+  color: ${colors.dangerRed};
 `;

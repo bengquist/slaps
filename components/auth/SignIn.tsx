@@ -88,7 +88,7 @@ function Login() {
                 }}
               >
                 <span>Not a member?</span>
-                <button type="button" style={{ color: colors.red }}>
+                <button type="button" style={{ color: colors.orange }}>
                   Create account
                 </button>
               </div>

@@ -37,7 +37,7 @@ export const BackButton = styled.button`
   top: 0;
   bottom: 0;
 
-  color: ${colors.red};
+  color: ${colors.orange};
   transition: 0.2s opacity;
 
   :hover,
@@ -78,7 +78,7 @@ export const TextArea = styled.textarea`
 `;
 
 export const Button = styled.button`
-  background: ${colors.red};
+  background: ${colors.orange};
   color: ${colors.white};
   width: 100%;
   padding: 0.75rem;

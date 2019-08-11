@@ -30,7 +30,7 @@ const Container = styled.div`
 const Progress = styled.div<{ progress: number }>`
   height: 10px;
   width: ${props => props.progress}%;
-  background: ${colors.red};
+  background: ${colors.orange};
   color: ${colors.white};
   border-radius: 20px;
   ${flexCenter};
@@ -43,6 +43,6 @@ const Circle = styled.div`
   border-radius: 50%;
   height: 15px;
   width: 15px;
-  background: ${colors.red};
+  background: ${colors.orange};
   margin-left: -7.5px;
 `;
