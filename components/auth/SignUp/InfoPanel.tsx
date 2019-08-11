@@ -1,5 +1,5 @@
 import React from "react";
-import * as Auth from "../styles";
+import * as Auth from "../styles/styles";
 import useFormValidation from "../../hooks/useFormValidation";
 import { validateSignUp } from "../helpers";
 import { useMutation } from "react-apollo-hooks";
@@ -7,6 +7,7 @@ import Cookie from "js-cookie";
 import { SIGN_UP } from "../mutation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import AuthInput from "../styles/AuthInput";
 
 type Props = {
   onContinue: () => void;
@@ -50,7 +51,7 @@ function InfoPanel({ onContinue, onBack }: Props) {
           </Auth.TitleContainer>
           <Auth.Label>
             <p>First Name</p>
-            <Auth.Input
+            <AuthInput
               name="firstName"
               type="text"
               onBlur={handleBlur}
@@ -60,7 +61,7 @@ function InfoPanel({ onContinue, onBack }: Props) {
           </Auth.Label>
           <Auth.Label>
             <p>Last Name</p>
-            <Auth.Input
+            <AuthInput
               name="lastName"
               type="text"
               onBlur={handleBlur}
@@ -70,7 +71,7 @@ function InfoPanel({ onContinue, onBack }: Props) {
           </Auth.Label>
           <Auth.Label>
             <p>Location</p>
-            <Auth.Input
+            <AuthInput
               name="location"
               type="text"
               onBlur={handleBlur}

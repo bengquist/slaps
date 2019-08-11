@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as Auth from "../styles";
+import * as Auth from "../styles/styles";
 import Dropzone from "../../ui/Dropzone";
 import { preventDefault } from "../../../lib/eventHelpers";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
@@ -35,7 +35,7 @@ function ImagePanel({ onContinue, onBack }: Props) {
             onFileAdded={(file: File) => setImage(URL.createObjectURL(file))}
             image={image}
           />
-          <Auth.Button type="submit">UPLOAD</Auth.Button>
+          <Auth.Button type="submit">CONTINUE</Auth.Button>
         </Auth.FormBody>
       </Auth.Form>
     </Auth.Panel>

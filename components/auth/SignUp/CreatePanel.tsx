@@ -1,5 +1,5 @@
 import React from "react";
-import * as Auth from "../styles";
+import * as Auth from "../styles/styles";
 import useFormValidation from "../../hooks/useFormValidation";
 import { validateSignUp } from "../helpers";
 import { useMutation } from "react-apollo-hooks";
@@ -8,8 +8,8 @@ import { SIGN_UP } from "../mutation";
 import AuthBox from "../AuthBox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import redirect from "../../../lib/redirect";
 import Router from "next/router";
+import AuthInput from "../styles/AuthInput";
 
 type Props = {
   onSignUp: () => void;
@@ -69,42 +69,46 @@ function SignUpPanel({ onSignUp }: Props) {
           </Auth.TitleContainer>
           <Auth.Label>
             <p>Username</p>
-            <Auth.Input
+            <AuthInput
               name="username"
               type="text"
               onBlur={handleBlur}
               onChange={handleChange}
               value={values.username}
+              error={errors.username}
             />
           </Auth.Label>
           <Auth.Label>
             <p>Email</p>
-            <Auth.Input
+            <AuthInput
               name="email"
               type="text"
               onBlur={handleBlur}
               onChange={handleChange}
               value={values.email}
+              error={errors.email}
             />
           </Auth.Label>
           <Auth.Label>
             <p>Password</p>
-            <Auth.Input
+            <AuthInput
               name="password"
               type="password"
               onBlur={handleBlur}
               onChange={handleChange}
               value={values.password}
+              error={errors.password}
             />
           </Auth.Label>
           <Auth.Label>
             <p>Confirm Password</p>
-            <Auth.Input
+            <AuthInput
               name="passwordConfirm"
               type="password"
               onBlur={handleBlur}
               onChange={handleChange}
               value={values.passwordConfirm}
+              error={errors.passwordConfirm}
             />
           </Auth.Label>
         </Auth.FormBody>

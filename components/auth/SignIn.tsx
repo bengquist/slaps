@@ -1,6 +1,6 @@
 import React from "react";
 import AuthBox from "./AuthBox";
-import * as Auth from "./styles";
+import * as Auth from "./styles/styles";
 import useFormValidation from "../hooks/useFormValidation";
 import { validateLogin } from "./helpers";
 import { SIGN_IN } from "./mutation";

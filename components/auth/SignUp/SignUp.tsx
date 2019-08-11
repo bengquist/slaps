@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import * as Auth from "../styles";
+import * as Auth from "../styles/styles";
 import CreatePanel from "./CreatePanel";
 import InfoPanel from "./InfoPanel";
 import ImagePanel from "./ImagePanel";

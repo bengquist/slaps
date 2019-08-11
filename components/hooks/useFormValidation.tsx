@@ -6,7 +6,7 @@ function useFormValidation(
   onSubmit: () => void
 ) {
   const [values, setValues] = React.useState(initialState);
-  const [errors, setErrors] = React.useState({});
+  const [errors, setErrors] = React.useState(initialState);
   const [isSubmitting, setSubmitting] = React.useState(false);
 
   React.useEffect(() => {
@@ -38,9 +38,12 @@ function useFormValidation(
     event.preventDefault();
     const validationErrors = validate(values);
     setErrors(validationErrors);
+
     setSubmitting(true);
 
-    await onSubmit();
+    if (Object.entries(validationErrors).length === 0) {
+      await onSubmit();
+    }
 
     setSubmitting(false);
   }

@@ -1,6 +1,6 @@
-import { flexColumnCenter } from "../style/helpers";
+import { flexColumnCenter } from "../../style/helpers";
 import styled from "styled-components";
-import colors from "../style/colors";
+import colors from "../../style/colors";
 import { motion } from "framer-motion";
 
 export const Container = styled.div`
@@ -67,13 +67,6 @@ export const Label = styled.label`
   color: ${colors.darkGray};
   font-size: 0.75rem;
   font-weight: bold;
-`;
-
-export const Input = styled.input`
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid ${colors.darkGray};
-  border-radius: 0.25rem;
 `;
 
 export const TextArea = styled.textarea`
