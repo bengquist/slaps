@@ -9,6 +9,7 @@ import Cookie from "js-cookie";
 import redirect from "../../lib/redirect";
 import Link from "next/link";
 import colors from "../style/colors";
+import AuthInput from "./styles/AuthInput";
 
 const INITIAL_STATE = {
   user: "",
@@ -51,22 +52,24 @@ function Login() {
             <Auth.Title>SIGN IN</Auth.Title>
             <Auth.Label>
               <p>Email or Username</p>
-              <Auth.Input
+              <AuthInput
                 name="user"
                 type="text"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.user}
+                error={errors.user}
               />
             </Auth.Label>
             <Auth.Label>
               <p>Password</p>
-              <Auth.Input
+              <AuthInput
                 name="password"
                 type="password"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.password}
+                error={errors.password}
               />
             </Auth.Label>
           </Auth.FormBody>

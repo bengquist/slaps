@@ -1,15 +1,16 @@
-import React from "react";
+import { useState, useEffect, FormEvent } from "react";
 
 function useFormValidation(
   initialState: any,
   validate: (values: any) => any,
   onSubmit: () => void
 ) {
-  const [values, setValues] = React.useState(initialState);
-  const [errors, setErrors] = React.useState(initialState);
-  const [isSubmitting, setSubmitting] = React.useState(false);
+  const [values, setValues] = useState(initialState);
+  const [errors, setErrors] = useState(initialState);
+  const [isSubmitting, setSubmitting] = useState(false);
+  const [focusList, setFocusList] = useState<string[]>([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isSubmitting) {
       const noErrors = Object.keys(errors).length === 0;
 
@@ -22,19 +23,29 @@ function useFormValidation(
     }
   }, [errors]);
 
-  function handleChange(event: React.FormEvent<HTMLInputElement>) {
+  function handleChange(event: FormEvent<HTMLInputElement>) {
     setValues({
       ...values,
       [event.currentTarget.name]: event.currentTarget.value
     });
   }
 
-  function handleBlur() {
+  function handleBlur(event: FormEvent<HTMLInputElement>) {
     const validationErrors = validate(values);
-    setErrors(validationErrors);
+    setFocusList([...focusList, event.currentTarget.name]);
+
+    const filteredErrors: any = {};
+
+    for (const error in validationErrors) {
+      if (focusList.includes(error) || error === event.currentTarget.name) {
+        filteredErrors[error] = validationErrors[error];
+      }
+    }
+
+    setErrors(filteredErrors);
   }
 
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const validationErrors = validate(values);
     setErrors(validationErrors);
