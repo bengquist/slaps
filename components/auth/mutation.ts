@@ -18,28 +18,23 @@ export const SIGN_UP = gql`
 
 export const UPDATE_USER = gql`
   mutation UPDATE_USER(
-    $username: String
-    $firstname: String
+    $firstName: String
     $lastName: String
     $location: String
     $bio: String
-    $image: String
   ) {
     updateUser(
-      username: $username
       firstName: $firstName
       lastName: $lastName
       location: $location
       bio: $bio
-      image: $image
     ) {
-      id
+      _id
       username
       firstName
       lastName
       location
       bio
-      image
     }
   }
 `;

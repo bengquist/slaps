@@ -11,6 +11,11 @@ function useFormValidation(
   const [focusList, setFocusList] = useState<string[]>([]);
 
   useEffect(() => {
+    setValues(initialState);
+    setErrors(initialState);
+  }, [initialState]);
+
+  useEffect(() => {
     if (isSubmitting) {
       const noErrors = Object.keys(errors).length === 0;
 
@@ -35,7 +40,7 @@ function useFormValidation(
   function handleBlur(
     event: FormEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
-    const validationErrors = validate && validate(values);
+    const validationErrors = validate ? validate(values) : {};
     setFocusList([...focusList, event.currentTarget.name]);
 
     const filteredErrors: any = {};
@@ -51,7 +56,7 @@ function useFormValidation(
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const validationErrors = validate && validate(values);
+    const validationErrors = validate ? validate(values) : {};
     setErrors(validationErrors);
 
     setSubmitting(true);

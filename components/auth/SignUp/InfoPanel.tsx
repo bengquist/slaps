@@ -1,42 +1,48 @@
 import React from "react";
 import * as Auth from "../styles/styles";
 import useFormValidation from "../../hooks/useFormValidation";
-import { validateSignUp } from "../helpers";
-import { useMutation } from "react-apollo-hooks";
-import Cookie from "js-cookie";
-import { SIGN_UP, UPDATE_USER } from "../mutation";
+import { useMutation, useQuery } from "react-apollo-hooks";
+import { UPDATE_USER } from "../mutation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import AuthInput from "../styles/AuthInput";
+import { GET_ME } from "../query";
 
 type Props = {
   onContinue: () => void;
   onBack: () => void;
 };
 
-const INITIAL_STATE = {
-  firstName: "",
-  lastName: "",
-  location: "",
-  bio: ""
-};
-
 function InfoPanel({ onContinue, onBack }: Props) {
+  const user = useQuery(GET_ME);
+
+  const INITIAL_STATE = user.data.me || {
+    firstName: "",
+    lastName: "",
+    location: "",
+    bio: ""
+  };
+
   const {
     handleSubmit,
     handleChange,
     handleBlur,
     values,
     isSubmitting
-  } = useFormValidation(INITIAL_STATE, validateSignUp, submitHandler);
+  } = useFormValidation(INITIAL_STATE, submitHandler);
 
   const toggleUpdateUser = useMutation(UPDATE_USER, {
-    update: (_, { data }) => {
-      Cookie.set("token", data.signUp.token);
+    update: (proxy, { data }) => {
+      const userData = proxy.readQuery({ query: GET_ME });
+
+      userData.me = data.updateUser;
+
+      // proxy.writeQuery({ query: GET_ME, data });
     }
   });
 
   async function submitHandler() {
+    console.log(values.firstName, values.lastName, values.location, values.bio);
     await toggleUpdateUser({
       variables: {
         firstName: values.firstName,
