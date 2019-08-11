@@ -26,7 +26,7 @@ export const TitleContainer = styled.h1`
 
 export const Title = styled.h1`
   color: ${colors.darkGray};
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
 `;

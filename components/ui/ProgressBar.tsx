@@ -11,6 +11,7 @@ function ProgressBar({ progress, ...props }: Props) {
   return (
     <Container {...props}>
       <Progress progress={progress} />
+      <Circle />
     </Container>
   );
 }
@@ -22,7 +23,6 @@ const Container = styled.div`
   height: 10px;
   background: ${colors.white};
   border-radius: 20px;
-  overflow: hidden;
   display: flex;
   align-items: center;
 `;
@@ -32,7 +32,17 @@ const Progress = styled.div<{ progress: number }>`
   width: ${props => props.progress}%;
   background: ${colors.red};
   color: ${colors.white};
+  border-radius: 20px;
   ${flexCenter};
 
   transition: 0.3s width;
+`;
+
+const Circle = styled.div`
+  border: 2px solid ${colors.pink};
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  background: ${colors.red};
+  margin-left: -7.5px;
 `;

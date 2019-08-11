@@ -6,16 +6,20 @@ import { useMutation } from "react-apollo-hooks";
 import Cookie from "js-cookie";
 import { SIGN_UP } from "../mutation";
 import AuthBox from "../AuthBox";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import redirect from "../../../lib/redirect";
+import Router from "next/router";
 
 type Props = {
   onSignUp: () => void;
 };
 
 const INITIAL_STATE = {
-  username: "a",
-  email: "a",
-  password: "a",
-  passwordConfirm: "a"
+  username: "",
+  email: "",
+  password: "",
+  passwordConfirm: ""
 };
 
 function SignUpPanel({ onSignUp }: Props) {
@@ -28,20 +32,20 @@ function SignUpPanel({ onSignUp }: Props) {
     isSubmitting
   } = useFormValidation(INITIAL_STATE, validateSignUp, submitHandler);
 
-  const toggleSignIn = useMutation(SIGN_UP, {
+  const toggleSignUp = useMutation(SIGN_UP, {
     update: (_, { data }) => {
       Cookie.set("token", data.signUp.token);
     }
   });
 
   async function submitHandler() {
-    // await toggleSignIn({
-    //   variables: {
-    //     username: values.username,
-    //     email: values.email,
-    //     password: values.password
-    //   }
-    // });
+    await toggleSignUp({
+      variables: {
+        username: values.username,
+        email: values.email,
+        password: values.password
+      }
+    });
 
     onSignUp();
   }
@@ -54,7 +58,15 @@ function SignUpPanel({ onSignUp }: Props) {
     >
       <Auth.Form onSubmit={handleSubmit}>
         <Auth.FormBody>
-          <Auth.Title>SIGN UP</Auth.Title>
+          <Auth.TitleContainer>
+            <Auth.BackButton
+              type="button"
+              onClick={() => Router.replace("/signin")}
+            >
+              <FontAwesomeIcon icon={faChevronLeft} /> LOG IN
+            </Auth.BackButton>
+            <Auth.Title>SIGN UP</Auth.Title>
+          </Auth.TitleContainer>
           <Auth.Label>
             <p>Username</p>
             <Auth.Input

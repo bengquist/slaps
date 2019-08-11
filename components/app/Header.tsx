@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import Router from "next/router";
@@ -7,6 +7,7 @@ import colors from "../style/colors";
 import redirect from "../../lib/redirect";
 import Cookie from "cookie";
 import { useApolloClient } from "react-apollo-hooks";
+import checkLoggedIn from "../../lib/checkLoggedIn";
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -20,7 +21,19 @@ Router.onRouteChangeError = () => {
 };
 
 function Header() {
+  const [isAuthed, setIsAuthed] = useState(false);
   const client = useApolloClient();
+
+  useEffect(() => {
+    const getUser = async () => {
+      const user = await checkLoggedIn(client);
+
+      console.log(user);
+      setIsAuthed(true);
+    };
+
+    getUser();
+  }, []);
 
   const signout = async () => {
     document.cookie = Cookie.serialize("token", "", {
@@ -42,16 +55,18 @@ function Header() {
         </Section>
 
         <Section>
-          <>
-            <Link href="/signin">
-              <Option>Log In</Option>
-            </Link>
-            <Link href="/signup">
-              <Option>Sign Up</Option>
-            </Link>{" "}
-          </>
-
-          <button onClick={signout}>Sign Out</button>
+          {isAuthed ? (
+            <button onClick={signout}>Sign Out</button>
+          ) : (
+            <>
+              <Link href="/signin">
+                <Option>Log In</Option>
+              </Link>
+              <Link href="/signup">
+                <Option>Sign Up</Option>
+              </Link>{" "}
+            </>
+          )}
         </Section>
       </Inner>
     </Container>

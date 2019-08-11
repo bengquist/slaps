@@ -6,19 +6,19 @@ import ImagePanel from "./ImagePanel";
 import ProgressBar from "../../ui/ProgressBar";
 
 function SignUp() {
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     switch (step) {
       case 2:
-        setProgress(0);
+        setProgress(20);
         break;
       case 3:
-        setProgress(33);
+        setProgress(40);
         break;
       default:
-        setProgress(66);
+        setProgress(60);
     }
   }, [step]);
 
