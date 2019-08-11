@@ -4,6 +4,7 @@ import Dropzone from "../../ui/Dropzone";
 import { preventDefault } from "../../../lib/eventHelpers";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { storage } from "../../../lib/firebase.config";
 
 type Props = {
   onContinue: () => void;

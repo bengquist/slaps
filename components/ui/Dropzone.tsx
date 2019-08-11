@@ -70,7 +70,9 @@ function Dropzone({ onFileAdded, image }: Props) {
       {image ? (
         <Image src={image} />
       ) : (
-        <Placeholder className="drag-files">Drag file to upload</Placeholder>
+        <Placeholder className="drag-files">
+          Click or drag a file to upload
+        </Placeholder>
       )}
     </Container>
   );

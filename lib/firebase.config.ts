@@ -1,7 +1,7 @@
-import * as firebase from "firebase/app";
+import firebase from "firebase/app";
 import "firebase/storage";
 
-const firebaseConfig = {
+const config = {
   apiKey: "AIzaSyBZzsReSzcOc42RkovYGBM29wk-VJRnlVI",
   authDomain: "slaps-db.firebaseapp.com",
   databaseURL: "https://slaps-db.firebaseio.com",
@@ -11,4 +11,6 @@ const firebaseConfig = {
   appId: "1:1079117281033:web:feb738fe4200d2fe"
 };
 
-firebase.initializeApp(firebaseConfig);
+const storage = firebase.initializeApp(config).storage();
+
+export { storage };
