@@ -8,6 +8,7 @@ import { storage } from "../../../lib/firebase.config";
 import { GET_ME } from "../query";
 import { useQuery, useMutation } from "react-apollo-hooks";
 import { UPDATE_USER } from "../mutation";
+import Router from "next/router";
 
 type Props = {
   onContinue: () => void;
@@ -33,19 +34,21 @@ function ImagePanel({ onContinue, onBack }: Props) {
   }, [user]);
 
   async function uploadHandler() {
-    const mainImage = storage.ref().child(image.name);
+    if (image.name) {
+      const mainImage = storage.ref().child(image.name);
 
-    await mainImage.put(image);
+      await mainImage.put(image);
 
-    const imageUrl = await mainImage.getDownloadURL();
+      const imageUrl = await mainImage.getDownloadURL();
 
-    await toggleUpdateUser({
-      variables: {
-        image: imageUrl
-      }
-    });
+      await toggleUpdateUser({
+        variables: {
+          image: imageUrl
+        }
+      });
+    }
 
-    onContinue();
+    Router.replace("/");
   }
 
   const imageUrl = image && image.name ? URL.createObjectURL(image) : image;
@@ -68,7 +71,7 @@ function ImagePanel({ onContinue, onBack }: Props) {
             onFileAdded={(file: File) => setImage(file)}
             image={imageUrl}
           />
-          <Auth.Button type="submit">CONTINUE</Auth.Button>
+          <Auth.Button type="submit">FINISH</Auth.Button>
         </Auth.FormBody>
       </Auth.Form>
     </Auth.Panel>
