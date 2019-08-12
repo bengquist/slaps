@@ -1,16 +1,16 @@
-import React from "react";
 import * as Auth from "../styles/styles";
-import useFormValidation from "../../hooks/useFormValidation";
-import { validateSignUp } from "../helpers";
-import { useMutation } from "@apollo/react-hooks";
-import Cookie from "js-cookie";
-import { SIGN_UP } from "../mutation";
 import AuthBox from "../AuthBox";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import Router from "next/router";
 import AuthInput from "../styles/AuthInput";
+import Cookie from "js-cookie";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PasswordValidation from "../PasswordValidation";
+import React from "react";
+import Router from "next/router";
+import { SIGN_UP } from "../mutation";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import useFormValidation from "../../hooks/useFormValidation";
+import { useMutation } from "@apollo/react-hooks";
+import { validateSignUp } from "../helpers";
 
 type Props = {
   onSignUp: () => void;

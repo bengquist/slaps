@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import Router from "next/router";
@@ -6,8 +6,8 @@ import NProgress from "nprogress";
 import colors from "../style/colors";
 import redirect from "../../lib/redirect";
 import Cookie from "cookie";
-import { useApolloClient } from "@apollo/react-hooks";
-import checkLoggedIn from "../../lib/checkLoggedIn";
+import { useApolloClient, useQuery } from "@apollo/react-hooks";
+import { GET_ME } from "../auth/query";
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -21,19 +21,8 @@ Router.onRouteChangeError = () => {
 };
 
 function Header() {
-  const [isAuthed, setIsAuthed] = useState(false);
   const client = useApolloClient();
-
-  useEffect(() => {
-    const getUser = async () => {
-      const user = await checkLoggedIn(client);
-
-      console.log(user);
-      setIsAuthed(true);
-    };
-
-    getUser();
-  }, []);
+  const user = useQuery(GET_ME);
 
   const signout = async () => {
     document.cookie = Cookie.serialize("token", "", {
@@ -55,16 +44,16 @@ function Header() {
         </Section>
 
         <Section>
-          {isAuthed ? (
+          {user.data.me ? (
             <button onClick={signout}>Sign Out</button>
           ) : (
             <>
               <Link href="/signin">
-                <Option>Log In</Option>
+                <button>Log In</button>
               </Link>
               <Link href="/signup">
-                <Option>Sign Up</Option>
-              </Link>{" "}
+                <button>Sign Up</button>
+              </Link>
             </>
           )}
         </Section>
@@ -87,17 +76,11 @@ const Inner = styled.div`
   padding: 0 1rem;
   margin: auto;
   max-width: ${props => props.theme.layout.maxWidth}px;
+  min-height: 4rem;
 `;
 
 const Section = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1rem;
-`;
-
-const Option = styled.button`
-  font-size: 1rem;
-  padding: 1.5rem 0;
+  display: flex;
 `;
 
 const Logo = styled.button`

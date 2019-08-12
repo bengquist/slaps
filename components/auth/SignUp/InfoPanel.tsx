@@ -1,12 +1,12 @@
-import React from "react";
 import * as Auth from "../styles/styles";
-import useFormValidation from "../../hooks/useFormValidation";
 import { useMutation, useQuery } from "@apollo/react-hooks";
-import { UPDATE_USER } from "../mutation";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import AuthInput from "../styles/AuthInput";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GET_ME } from "../query";
+import React from "react";
+import { UPDATE_USER } from "../mutation";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import useFormValidation from "../../hooks/useFormValidation";
 
 type Props = {
   onContinue: () => void;

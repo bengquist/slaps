@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
 import * as Auth from "../styles/styles";
+import React, { useEffect, useState } from "react";
+import { useMutation, useQuery } from "@apollo/react-hooks";
 import Dropzone from "../../ui/Dropzone";
-import { preventDefault } from "../../../lib/eventHelpers";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { storage } from "../../../lib/firebase.config";
 import { GET_ME } from "../query";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import { UPDATE_USER } from "../mutation";
 import Router from "next/router";
+import { UPDATE_USER } from "../mutation";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { preventDefault } from "../../../lib/eventHelpers";
+import { storage } from "../../../lib/firebase.config";
 
 type Props = {
   onContinue: () => void;

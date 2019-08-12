@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import * as Auth from "../styles/styles";
+import  * as Auth from "../styles/styles"; 
+import React, { useEffect, useState } from "react";
 import CreatePanel from "./CreatePanel";
-import InfoPanel from "./InfoPanel";
 import ImagePanel from "./ImagePanel";
+import InfoPanel from "./InfoPanel";
 import ProgressBar from "../../ui/ProgressBar";
 
 function SignUp() {
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
