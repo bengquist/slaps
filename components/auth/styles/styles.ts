@@ -91,3 +91,9 @@ export const Button = styled.button`
     opacity: 0.8;
   }
 `;
+
+export const ErrorMessage = styled.p`
+  color: ${colors.dangerRed};
+  font-size: 0.8rem;
+  text-align: center;
+`;

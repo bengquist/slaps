@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AuthBox from "./AuthBox";
 import * as Auth from "./styles/styles";
 import useFormValidation from "../hooks/useFormValidation";
@@ -10,6 +10,7 @@ import redirect from "../../lib/redirect";
 import Link from "next/link";
 import colors from "../style/colors";
 import AuthInput from "./styles/AuthInput";
+import { formatError } from "../../lib/errorHelpers.tsx";
 
 const INITIAL_STATE = {
   user: "",
@@ -26,7 +27,7 @@ function Login() {
     isSubmitting
   } = useFormValidation(INITIAL_STATE, submitHandler, validateLogin);
 
-  const [toggleSignIn] = useMutation(SIGN_IN, {
+  const [toggleSignIn, { error }] = useMutation(SIGN_IN, {
     update: (_, { data }) => {
       Cookie.set("token", data.signIn.token);
     }
@@ -72,6 +73,11 @@ function Login() {
                 error={errors.password}
               />
             </Auth.Label>
+            {error && (
+              <Auth.ErrorMessage>
+                {formatError(error.message)}
+              </Auth.ErrorMessage>
+            )}
           </Auth.FormBody>
 
           <div>
