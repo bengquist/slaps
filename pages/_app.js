@@ -7,13 +7,13 @@ import withApollo from "../lib/withApollo";
 
 class MyApp extends App {
   render() {
-    const { Component, pageProps, apolloClient } = this.props;
+    const { Component, pageProps, client } = this.props;
 
     return (
       <Container>
         <GlobalStyle />
         <ThemeProvider theme={theme}>
-          <ApolloProvider client={apolloClient}>
+          <ApolloProvider client={client}>
             <Component {...pageProps} />
           </ApolloProvider>
         </ThemeProvider>
