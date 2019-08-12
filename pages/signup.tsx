@@ -8,7 +8,7 @@ const SignUpPage = () => {
 };
 
 SignUpPage.getInitialProps = async context => {
-  const { me } = await checkLoggedIn(context.apolloClient);
+  const { me } = await checkLoggedIn(context.client);
 
   if (me) {
     redirect(context, "/");

@@ -6,7 +6,7 @@ import redirect from "../lib/redirect";
 const Home = () => <Page>Hi</Page>;
 
 Home.getInitialProps = async function(context) {
-  const { me } = await checkLoggedIn(context.apolloClient);
+  const { me } = await checkLoggedIn(context.client);
 
   if (!me) {
     redirect(context, "/signin");
