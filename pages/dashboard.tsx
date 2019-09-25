@@ -1,11 +1,10 @@
-import Page from '../components/app/Page'
 import React from 'react'
 
 function dashboard() {
   return (
-    <Page>
+    <div>
       dashboard
-    </Page>
+    </div>
   )
 }
 

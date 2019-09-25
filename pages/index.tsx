@@ -1,9 +1,8 @@
-import Page from "../components/app/Page";
 import React from "react";
 import checkLoggedIn from "../lib/checkLoggedIn";
 import redirect from "../lib/redirect";
 
-const Home = () => <Page>Hi</Page>;
+const Home = () => <div>Hi</div>;
 
 Home.getInitialProps = async function(context: any) {
   const { me } = await checkLoggedIn(context.client);
