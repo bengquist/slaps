@@ -28,9 +28,11 @@ function Sidebar() {
         </Link>
       </Section>
       <Section>
-        <Button>
-          {user.data.me && <Image src={user.data.me.image} alt=""/>}
-        </Button>
+        <Link href="/profile">
+          <Button>
+            {user.data.me && <Image src={user.data.me.image} alt=""/>}
+          </Button>
+        </Link>
       </Section>
     </Container>
   )
