@@ -1,14 +1,20 @@
-import React from "react";
-import styled from "styled-components";
 import Header from "./Header";
 import Meta from "./Meta";
+import React from "react";
+import Sidebar from "./Sidebar";
+import styled from "styled-components";
 
 const Page: React.FC = props => {
   return (
     <Container>
       <Meta />
       <Header />
-      <Body>{props.children}</Body>
+      <Inner>
+        <Sidebar />
+        <Body>
+          {props.children}
+        </Body>
+      </Inner>
     </Container>
   );
 };
@@ -17,13 +23,14 @@ export default Page;
 
 const Container = styled.div``;
 
-const Body = styled.div`
-  height: 100vh;
-  padding: 0 1rem;
-  margin: auto;
+const Inner = styled.div`
+  height: 100%;
+  margin: 1rem auto 0 auto;
   max-width: ${props => props.theme.layout.maxWidth}px;
-
-  > * {
-    height: 100%;
-  }
+  display: flex;
 `;
+
+const Body = styled.div`
+  margin-left: 1rem;
+  padding: 1rem;
+`

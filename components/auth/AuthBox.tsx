@@ -1,14 +1,14 @@
-import React from "react";
-import styled from "styled-components";
 import colors, { Colors } from "../style/colors";
-import { motion } from "framer-motion";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebookSquare,
+  faGoogle,
   faSoundcloud,
-  faTwitter,
-  faGoogle
+  faTwitter
 } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
+import { motion } from "framer-motion";
+import styled from "styled-components";
 
 type Props = {
   title: string;

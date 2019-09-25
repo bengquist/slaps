@@ -1,7 +1,7 @@
-import { flexColumnCenter } from "../../style/helpers";
-import styled from "styled-components";
 import colors from "../../style/colors";
+import { flexColumnCenter } from "../../style/helpers";
 import { motion } from "framer-motion";
+import styled from "styled-components";
 
 export const Container = styled.div`
   background: ${props => props.theme.gradient && props.theme.gradient.dark};

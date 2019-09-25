@@ -4,7 +4,7 @@ export const GlobalStyle = createGlobalStyle`
   html {
     font-size: 15px;
     background: rgba(247, 247, 247, 1);
-    height: 100vh;
+    min-height: 100vh;
     box-sizing: border-box;
   }
   body {

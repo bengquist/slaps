@@ -1,8 +1,8 @@
 import React, { ComponentPropsWithoutRef } from "react";
-import styled from "styled-components";
 import Input from "../../ui/Input";
-import { flexCenter } from "../../style/helpers";
 import colors from "../../style/colors";
+import { flexCenter } from "../../style/helpers";
+import styled from "styled-components";
 
 type Props = ComponentPropsWithoutRef<"input"> & {
   error?: string;

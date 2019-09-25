@@ -1,13 +1,13 @@
-import React from "react";
-import styled from "styled-components";
+import { useApolloClient, useQuery } from "@apollo/react-hooks";
+import Cookie from "cookie";
+import { GET_ME } from "../auth/query";
 import Link from "next/link";
-import Router from "next/router";
 import NProgress from "nprogress";
+import React from "react";
+import Router from "next/router";
 import colors from "../style/colors";
 import redirect from "../../lib/redirect";
-import Cookie from "cookie";
-import { useApolloClient, useQuery } from "@apollo/react-hooks";
-import { GET_ME } from "../auth/query";
+import styled from "styled-components";
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -73,7 +73,7 @@ const Inner = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
+  padding: 0 2rem;
   margin: auto;
   max-width: ${props => props.theme.layout.maxWidth}px;
   min-height: 4rem;
