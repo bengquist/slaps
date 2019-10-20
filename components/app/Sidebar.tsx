@@ -30,7 +30,7 @@ function Sidebar() {
       <Section>
         <Link href="/profile">
           <Button>
-            {user.data.me && <Image src={user.data.me.image} alt=""/>}
+            {user.data && user.data.me && <Image src={user.data.me.image} alt=""/>}
           </Button>
         </Link>
       </Section>

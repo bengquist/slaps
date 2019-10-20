@@ -1,10 +1,11 @@
-import React from "react";
+import React, { ReactNode } from "react";
+import Page from "../components/app/Page";
 import checkLoggedIn from "../lib/checkLoggedIn";
 import redirect from "../lib/redirect";
 
-const Home = () => <div>Hi</div>;
+const HomePage = () => <div>Hi</div>;
 
-Home.getInitialProps = async function(context: any) {
+HomePage.getInitialProps = async function(context: any) {
   const { me } = await checkLoggedIn(context.client);
 
   if (!me) {
@@ -14,4 +15,10 @@ Home.getInitialProps = async function(context: any) {
   return me;
 };
 
-export default Home;
+HomePage.getLayout = (page: ReactNode) => (
+  <Page>
+    {page}
+  </Page>
+)
+
+export default HomePage;

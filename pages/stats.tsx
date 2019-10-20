@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
+import Page from '../components/app/Page'
 
-function stats() {
+function StatsPage() {
   return (
     <div>
-      stats
+      StatsPage
     </div>
   )
 }
 
-export default stats
+StatsPage.getLayout = (page: ReactNode) => (
+  <Page>
+    {page}
+  </Page>
+)
+
+export default StatsPage

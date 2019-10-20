@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
+import Page from '../components/app/Page'
 
-function feed() {
+function FeedPage() {
   return (
     <div>
-      feed
+      FeedPage
     </div>
   )
 }
 
-export default feed
+FeedPage.getLayout = (page: ReactNode) => (
+  <Page>
+    {page}
+  </Page>
+)
+
+export default FeedPage

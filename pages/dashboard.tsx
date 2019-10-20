@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
+import Page from '../components/app/Page'
 
-function dashboard() {
+function DashboardPage() {
   return (
     <div>
-      dashboard
+      DashboardPage
     </div>
   )
 }
 
-export default dashboard
+DashboardPage.getLayout = (page: ReactNode) => (
+  <Page>
+    {page}
+  </Page>
+)
+
+export default DashboardPage

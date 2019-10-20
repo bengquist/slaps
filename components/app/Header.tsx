@@ -44,7 +44,7 @@ function Header() {
         </Section>
 
         <Section>
-          {user.data.me ? (
+          {user.data && user.data.me ? (
             <button onClick={signout}>Sign Out</button>
           ) : (
             <>

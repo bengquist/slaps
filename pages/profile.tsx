@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
+import Page from '../components/app/Page'
 
-function profile() {
+function ProfilePage() {
   return (
     <div>
-      profile
+      ProfilePage
     </div>
   )
 }
 
-export default profile
+ProfilePage.getLayout = (page: ReactNode) => (
+  <Page>
+    {page}
+  </Page>
+)
+
+export default ProfilePage
