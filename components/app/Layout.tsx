@@ -4,7 +4,7 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import styled from "styled-components";
 
-const Page: React.FC = props => {
+const Layout: React.FC = props => {
   return (
     <Container>
       <Meta />
@@ -19,7 +19,7 @@ const Page: React.FC = props => {
   );
 };
 
-export default Page;
+export default Layout;
 
 const Container = styled.div``;
 

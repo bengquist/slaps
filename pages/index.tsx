@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import Page from "../components/app/Page";
+import Layout from "../components/app/Layout";
 import checkLoggedIn from "../lib/checkLoggedIn";
 import redirect from "../lib/redirect";
 
@@ -16,9 +16,9 @@ HomePage.getInitialProps = async function(context: any) {
 };
 
 HomePage.getLayout = (page: ReactNode) => (
-  <Page>
+  <Layout>
     {page}
-  </Page>
+  </Layout>
 )
 
 export default HomePage;

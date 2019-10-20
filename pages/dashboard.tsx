@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import Page from '../components/app/Page'
+import Layout from '../components/app/Layout'
 
 function DashboardPage() {
   return (
@@ -10,9 +10,9 @@ function DashboardPage() {
 }
 
 DashboardPage.getLayout = (page: ReactNode) => (
-  <Page>
+  <Layout>
     {page}
-  </Page>
+  </Layout>
 )
 
 export default DashboardPage
